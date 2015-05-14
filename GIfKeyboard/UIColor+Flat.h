@@ -18,9 +18,14 @@
 + (UIColor *)greenSee;
 + (UIColor *)nephritis;
 + (UIColor *)belizeHole;
-
++ (UIColor *)sunFlower;
++ (UIColor *)alizarin;
 + (UIColor *)lightGrey;
 + (UIColor *)airbnbPink;
++ (UIColor *)carrot;
++ (UIColor *)pomegranate;
++ (UIColor *)pumpkin;
++ (UIColor *)wisteria;
 
 + (UIColor *)randomFlatColor;
 @end

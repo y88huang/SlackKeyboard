@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SearchKeyboardView;
+@class KeyboardStyle;
+
+@protocol SearchKeybardViewProtocol <NSObject>
+
+- (void)keyboard:(SearchKeyboardView *)keyboard didFinishSearchingWithKeyword:(NSString *)keyword;
+
+@end
 
 @interface SearchKeyboardView : UIView
+
+@property (nonatomic, weak) id<SearchKeybardViewProtocol> delegate;
+
+- (instancetype)initWithStyle:(KeyboardStyle *)style;
 
 @end

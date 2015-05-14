@@ -10,4 +10,14 @@
 
 @interface GifManager : AFHTTPRequestOperationManager
 
++ (instancetype)sharedManager;
+
+//- (void)getTrendingGifonSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))sucess
+//                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)getTrendingGifonSuccess:(void (^)(NSArray *gifs, id responseObject))sucess
+                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)getGifWithKeyword:(NSString *)keyword onSuccess:(void (^)(NSArray *gifs, id responseObject))sucess
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

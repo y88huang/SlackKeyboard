@@ -7,41 +7,199 @@
 //
 
 #import "KeyboardViewController.h"
+#import "ImageCollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "GifManager.h"
+#import "Gif.h"
+#import "Masonry.h"
+#import "SearchKeyboardView.h"
+#import "UIColor+Flat.h"
+#import "SettingManager.h"
+#import "KeyboardStyle.h"
 
-@interface KeyboardViewController ()
+const static CGFloat kButtonPanelHeight = 35.0f;
+const static CGFloat kButtonPadding = 4.0f;
+const static CGFloat kButtonWidth = 40.0f;
+
+@interface KeyboardViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchKeybardViewProtocol>
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
+@property (nonatomic, strong) UIButton *searchGifButton;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *animatedGIFs;
+
+@property (nonatomic, strong) UIButton *capButton;
+@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) SearchKeyboardView *kbView;
+
+@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, strong) UIView *bottomPanel;
+@property (nonatomic, strong) UILabel *keywordLabel;
+@property (nonatomic, strong) KeyboardStyle *style;
+
 @end
 
 @implementation KeyboardViewController
+{
+    UIView *_firstRow;
+    UIView *_secondRow;
+    UIView *_thirdRow;
+    UIView *_fourthRow;
+    CGFloat _expandedHeight;
+}
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    
     // Add custom view sizing constraints here
+    if (CGRectGetHeight(self.view.frame) == 0.0f || CGRectGetWidth(self.view.frame) == 0.0f) {
+        return;
+    }
+    [self.inputView removeConstraint:self.heightConstraint];
+    
+       self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant: _expandedHeight];
+    self.heightConstraint.priority = 990;
+    [self.inputView addConstraint: self.heightConstraint];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.animatedGIFs = [[NSMutableArray alloc] initWithCapacity:10];
     // Perform custom UI setup here
+    [[SettingManager sharedInstance] updateSetting];
+    self.style = [[SettingManager sharedInstance] keyboardSetting];
+    [self setupCollectionView];
+    [self setupKeyBoardView];
+    [self setupBottomPanel];
+
+    _expandedHeight = 216.0;
+    self.view.backgroundColor = [UIColor blackColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self updateViewConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    __weak typeof(self) weakSelf = self;
+    [[GifManager sharedManager] getTrendingGifonSuccess:^(NSArray *gifs, id responseObject) {
+        typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.animatedGIFs addObjectsFromArray:gifs];
+        [strongSelf.collectionView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
+#pragma mark -
+#pragma mark - setup code
+
+- (void)setupKeywordLabel
+{
+    self.keywordLabel = [[UILabel alloc] init];
+    self.keywordLabel.textColor = [UIColor whiteColor];
+    self.keywordLabel.text = @"#Trending 20";
+    [self.bottomPanel addSubview:self.keywordLabel];
+    [self.keywordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.bottomPanel.mas_right);
+        make.top.equalTo(self.bottomPanel.mas_top);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom);
+        make.width.equalTo(self.bottomPanel.mas_width).dividedBy(2.0f);
+    }];
+}
+
+- (void)setupBottomPanel
+{
+    self.bottomPanel = [[UIView alloc] init];
+    self.bottomPanel.backgroundColor = self.style.themeColor;
+    [self.view addSubview:self.bottomPanel];
+    [self.bottomPanel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.top.equalTo(self.collectionView.mas_bottom);
+    }];
+    [self setupNextKey];
+    [self setupSearchKey];
+    [self setupKeywordLabel];
+}
+
+- (void)setupKeyBoardView
+{
+    self.kbView = [[SearchKeyboardView alloc] initWithStyle:self.style];
+    self.kbView.hidden = YES;
+    self.kbView.delegate = self;
+    [self.view addSubview:self.kbView];
+    [self.kbView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+    }];
+}
+
+- (void)setupSearchKey
+{
+    self.searchGifButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.searchGifButton.backgroundColor = [UIColor sunFlower];
+    self.searchGifButton.layer.cornerRadius = 4.0f;
+    [self.searchGifButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+    [self.searchGifButton setTintColor:[UIColor whiteColor]];
+    self.searchGifButton.imageEdgeInsets = UIEdgeInsetsMake(0.0f, 7.0f , 0.0, 7.0f);
+    [self.searchGifButton addTarget:self action:@selector(searchForGif:) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomPanel addSubview: self.searchGifButton];
+    [self.searchGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nextKeyboardButton.mas_right).with.offset(10.0f);
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+}
+
+- (void)setupNextKey
+{
     self.nextKeyboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    [self.nextKeyboardButton setTitle:NSLocalizedString(@"Next Keyboard", @"Title for 'Next Keyboard' button") forState:UIControlStateNormal];
-    [self.nextKeyboardButton sizeToFit];
-    self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    self.nextKeyboardButton.backgroundColor = [UIColor airbnbPink];
+    [self.nextKeyboardButton setImage:[UIImage imageNamed:@"nextKeyboard"] forState:UIControlStateNormal];
+    [self.nextKeyboardButton setTintColor:[UIColor whiteColor]];
+    self.nextKeyboardButton.imageEdgeInsets = UIEdgeInsetsMake(0.0f, 5.0f , 0.0, 5.0f);
+    self.nextKeyboardButton.layer.cornerRadius = 4.0f;
     [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:self.nextKeyboardButton];
+    [self.bottomPanel addSubview:self.nextKeyboardButton];
     
-    NSLayoutConstraint *nextKeyboardButtonLeftSideConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *nextKeyboardButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    [self.view addConstraints:@[nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint]];
+    [self.nextKeyboardButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.bottomPanel.mas_left).with.offset(kButtonPadding);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+}
+
+- (void)setupCollectionView
+{
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated
+
 }
 
 - (void)textWillChange:(id<UITextInput>)textInput {
@@ -53,11 +211,107 @@
     
     UIColor *textColor = nil;
     if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark) {
+
         textColor = [UIColor whiteColor];
     } else {
         textColor = [UIColor blackColor];
     }
     [self.nextKeyboardButton setTitleColor:textColor forState:UIControlStateNormal];
+}
+
+#pragma mark -
+#pragma mark - UICollectionView Delegate
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(150.0f, CGRectGetHeight(self.collectionView.bounds) / 2.0f);
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    NSInteger index = indexPath.section * 2 + indexPath.row;
+    Gif *gif = self.animatedGIFs[index];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL]];
+    return cell;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Gif *gif = self.animatedGIFs[indexPath.section * 2 + indexPath.row];
+    [self.textDocumentProxy insertText:gif.gifURL];
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.animatedGIFs.count % 2 + 1;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.animatedGIFs.count / 2;
+}
+
+#pragma mark Helpers
+- (void)showKeyboard
+{
+    _expandedHeight = 280.0f;
+    self.kbView.hidden = NO;
+    [self.view setNeedsUpdateConstraints];
+}
+
+- (void)hideKeyboard
+{
+    _expandedHeight = 216.0f;
+    self.kbView.hidden = YES;
+    [self.view setNeedsUpdateConstraints];
+}
+
+- (void)advanceToNextInputMode
+{
+    [super advanceToNextInputMode];
+}
+
+#pragma mark -
+#pragma mark - button selector
+- (void)searchForGif:(UIButton *)sender
+{
+    [self showKeyboard];
+}
+
+#pragma mark -
+#pragma mark - keyboardView Delegate
+
+- (void)keyboard:(SearchKeyboardView *)keyboard didFinishSearchingWithKeyword:(NSString *)keyword
+{
+    [self hideKeyboard];
+    if ([keyword length] == 0)
+    {
+        return;
+    }
+    [[GifManager sharedManager] getGifWithKeyword:keyword onSuccess:^(NSArray *gifs, id responseObject) {
+        [self.animatedGIFs removeAllObjects];
+        self.keywordLabel.text = [NSString stringWithFormat:@"#%@",keyword];
+        [self.animatedGIFs addObjectsFromArray:gifs];
+        [self.collectionView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    NSLog(@"%@",keyword);
 }
 
 @end

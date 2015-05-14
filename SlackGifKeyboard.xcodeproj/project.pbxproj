@@ -7,13 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */; };
+		696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 696EFDBA1AFE8E2600396024 /* nextKeyboard.png */; };
+		696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
+		696EFDBF1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
+		6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */; };
+		698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
+		698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */; };
+		698279271B030B0D0043E8C7 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279261B030B0D0043E8C7 /* SettingManager.m */; };
+		6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
 		69BCF2791AEEBE1F0097B840 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2781AEEBE1F0097B840 /* main.m */; };
 		69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF27B1AEEBE1F0097B840 /* AppDelegate.m */; };
-		69BCF27F1AEEBE1F0097B840 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF27E1AEEBE1F0097B840 /* ViewController.m */; };
-		69BCF2821AEEBE1F0097B840 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BCF2801AEEBE1F0097B840 /* Main.storyboard */; };
+		69BCF27F1AEEBE1F0097B840 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */; };
 		69BCF2841AEEBE1F0097B840 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69BCF2831AEEBE1F0097B840 /* Images.xcassets */; };
 		69BCF2871AEEBE1F0097B840 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69BCF2851AEEBE1F0097B840 /* LaunchScreen.xib */; };
 		69BCF2931AEEBE1F0097B840 /* SlackGifKeyboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2921AEEBE1F0097B840 /* SlackGifKeyboardTests.m */; };
+		69BCF2A61AEED1770097B840 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2A51AEED1770097B840 /* KeyboardViewController.m */; };
+		69BCF2A91AEED1770097B840 /* GIfKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69BCF2A01AEED1770097B840 /* GIfKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */; };
+		69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */; };
+		69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2BE1AEF15670097B840 /* GifManager.m */; };
+		69BCF2C21AEF17530097B840 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2C11AEF17530097B840 /* Gif.m */; };
+		69F7B30E1AFE99EB000471E1 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30D1AFE99EB000471E1 /* search.png */; };
+		69F7B3101AFEFE2E000471E1 /* uppercase.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30F1AFEFE2E000471E1 /* uppercase.png */; };
+		69F7B3121AFF014B000471E1 /* backSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B3111AFF014B000471E1 /* backSpace.png */; };
+		69F7B3141AFF021E000471E1 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B3131AFF021E000471E1 /* Back.png */; };
+		69F7B3161AFF0320000471E1 /* Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B3151AFF0320000471E1 /* Cancel.png */; };
+		69FD7F4E1AF1CF8F00EBE0B8 /* SearchKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FD7F4D1AF1CF8F00EBE0B8 /* SearchKeyboardView.m */; };
+		88862DAD0E54B7C16DFF54A5 /* libPods-SlackGifKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF4115C7795538B7DDCB68F /* libPods-SlackGifKeyboard.a */; };
+		ABB6944CBCA6AE24A9CEF37F /* libPods-GIfKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B93ED4119B1EBBF5FE53846 /* libPods-GIfKeyboard.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,22 +46,81 @@
 			remoteGlobalIDString = 69BCF2721AEEBE1F0097B840;
 			remoteInfo = SlackGifKeyboard;
 		};
+		69BCF2A71AEED1770097B840 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69BCF26B1AEEBE1F0097B840 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69BCF29F1AEED1770097B840;
+			remoteInfo = GIfKeyboard;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		69BCF2AD1AEED1770097B840 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				69BCF2A91AEED1770097B840 /* GIfKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1F8BE7B2276907EE24FF7FD9 /* Pods-SlackGifKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackGifKeyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlackGifKeyboard/Pods-SlackGifKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		6925AF941AEF343300E57F15 /* SlackGifKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SlackGifKeyboard.entitlements; sourceTree = "<group>"; };
+		696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
+		696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
+		696EFDBA1AFE8E2600396024 /* nextKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextKeyboard.png; sourceTree = "<group>"; };
+		696EFDBC1AFE8F8500396024 /* UIColor+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Flat.h"; sourceTree = "<group>"; };
+		696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Flat.m"; sourceTree = "<group>"; };
+		6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSettingViewController.h; sourceTree = "<group>"; };
+		6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSettingViewController.m; sourceTree = "<group>"; };
+		6982791E1B0288F60043E8C7 /* KeyboardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStyle.h; sourceTree = "<group>"; };
+		6982791F1B0288F60043E8C7 /* KeyboardStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStyle.m; sourceTree = "<group>"; };
+		698279211B028A4E0043E8C7 /* KeyboardSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSettingManager.h; sourceTree = "<group>"; };
+		698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSettingManager.m; sourceTree = "<group>"; };
+		698279251B030B0D0043E8C7 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
+		698279261B030B0D0043E8C7 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
+		698279281B038F240043E8C7 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		6982792B1B039A620043E8C7 /* GIfKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GIfKeyboard.entitlements; sourceTree = "<group>"; };
 		69BCF2731AEEBE1F0097B840 /* SlackGifKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackGifKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BCF2771AEEBE1F0097B840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69BCF2781AEEBE1F0097B840 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69BCF27A1AEEBE1F0097B840 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69BCF27B1AEEBE1F0097B840 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		69BCF27D1AEEBE1F0097B840 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		69BCF27E1AEEBE1F0097B840 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		69BCF2811AEEBE1F0097B840 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69BCF27D1AEEBE1F0097B840 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		69BCF2831AEEBE1F0097B840 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69BCF2861AEEBE1F0097B840 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		69BCF28C1AEEBE1F0097B840 /* SlackGifKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlackGifKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BCF2911AEEBE1F0097B840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69BCF2921AEEBE1F0097B840 /* SlackGifKeyboardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlackGifKeyboardTests.m; sourceTree = "<group>"; };
+		69BCF2A01AEED1770097B840 /* GIfKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GIfKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		69BCF2A31AEED1770097B840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69BCF2A41AEED1770097B840 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
+		69BCF2A51AEED1770097B840 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
+		69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
+		69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		69BCF2BD1AEF15670097B840 /* GifManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManager.h; sourceTree = "<group>"; };
+		69BCF2BE1AEF15670097B840 /* GifManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManager.m; sourceTree = "<group>"; };
+		69BCF2C01AEF17530097B840 /* Gif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
+		69BCF2C11AEF17530097B840 /* Gif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
+		69F7B30D1AFE99EB000471E1 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		69F7B30F1AFEFE2E000471E1 /* uppercase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uppercase.png; sourceTree = "<group>"; };
+		69F7B3111AFF014B000471E1 /* backSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backSpace.png; sourceTree = "<group>"; };
+		69F7B3131AFF021E000471E1 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		69F7B3151AFF0320000471E1 /* Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cancel.png; sourceTree = "<group>"; };
+		69FD7F4C1AF1CF8E00EBE0B8 /* SearchKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchKeyboardView.h; sourceTree = "<group>"; };
+		69FD7F4D1AF1CF8F00EBE0B8 /* SearchKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchKeyboardView.m; sourceTree = "<group>"; };
+		81F094DF58E405225126EB71 /* Pods-SlackGifKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackGifKeyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlackGifKeyboard/Pods-SlackGifKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+		8B93ED4119B1EBBF5FE53846 /* libPods-GIfKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GIfKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB7FC02CCC99597F41B1CEE2 /* Pods-GIfKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIfKeyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GIfKeyboard/Pods-GIfKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		B0BB7ED82D7326BE470F400C /* Pods-GIfKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIfKeyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-GIfKeyboard/Pods-GIfKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+		FFF4115C7795538B7DDCB68F /* libPods-SlackGifKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SlackGifKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88862DAD0E54B7C16DFF54A5 /* libPods-SlackGifKeyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,15 +139,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		69BCF29D1AEED1770097B840 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB6944CBCA6AE24A9CEF37F /* libPods-GIfKeyboard.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D61B1F3D282CCD2BFF19349 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB7FC02CCC99597F41B1CEE2 /* Pods-GIfKeyboard.debug.xcconfig */,
+				B0BB7ED82D7326BE470F400C /* Pods-GIfKeyboard.release.xcconfig */,
+				1F8BE7B2276907EE24FF7FD9 /* Pods-SlackGifKeyboard.debug.xcconfig */,
+				81F094DF58E405225126EB71 /* Pods-SlackGifKeyboard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		69BCF26A1AEEBE1F0097B840 = {
 			isa = PBXGroup;
 			children = (
 				69BCF2751AEEBE1F0097B840 /* SlackGifKeyboard */,
 				69BCF28F1AEEBE1F0097B840 /* SlackGifKeyboardTests */,
+				69BCF2A11AEED1770097B840 /* GIfKeyboard */,
 				69BCF2741AEEBE1F0097B840 /* Products */,
+				0D61B1F3D282CCD2BFF19349 /* Pods */,
+				D2BADF7C77B62E595029B378 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +178,7 @@
 			children = (
 				69BCF2731AEEBE1F0097B840 /* SlackGifKeyboard.app */,
 				69BCF28C1AEEBE1F0097B840 /* SlackGifKeyboardTests.xctest */,
+				69BCF2A01AEED1770097B840 /* GIfKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,12 +186,21 @@
 		69BCF2751AEEBE1F0097B840 /* SlackGifKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				6925AF941AEF343300E57F15 /* SlackGifKeyboard.entitlements */,
 				69BCF27A1AEEBE1F0097B840 /* AppDelegate.h */,
 				69BCF27B1AEEBE1F0097B840 /* AppDelegate.m */,
-				69BCF27D1AEEBE1F0097B840 /* ViewController.h */,
-				69BCF27E1AEEBE1F0097B840 /* ViewController.m */,
-				69BCF2801AEEBE1F0097B840 /* Main.storyboard */,
+				6982791E1B0288F60043E8C7 /* KeyboardStyle.h */,
+				6982791F1B0288F60043E8C7 /* KeyboardStyle.m */,
+				6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */,
+				6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */,
+				69BCF27D1AEEBE1F0097B840 /* SettingViewController.h */,
+				69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */,
+				69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */,
+				69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */,
+				698279211B028A4E0043E8C7 /* KeyboardSettingManager.h */,
+				698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */,
 				69BCF2831AEEBE1F0097B840 /* Images.xcassets */,
+				698279281B038F240043E8C7 /* Constant.h */,
 				69BCF2851AEEBE1F0097B840 /* LaunchScreen.xib */,
 				69BCF2761AEEBE1F0097B840 /* Supporting Files */,
 			);
@@ -119,6 +233,52 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		69BCF2A11AEED1770097B840 /* GIfKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6982792B1B039A620043E8C7 /* GIfKeyboard.entitlements */,
+				696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */,
+				696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */,
+				69BCF2A41AEED1770097B840 /* KeyboardViewController.h */,
+				69BCF2A51AEED1770097B840 /* KeyboardViewController.m */,
+				69FD7F4C1AF1CF8E00EBE0B8 /* SearchKeyboardView.h */,
+				69FD7F4D1AF1CF8F00EBE0B8 /* SearchKeyboardView.m */,
+				69F7B3151AFF0320000471E1 /* Cancel.png */,
+				69BCF2BD1AEF15670097B840 /* GifManager.h */,
+				69BCF2BE1AEF15670097B840 /* GifManager.m */,
+				69BCF2C01AEF17530097B840 /* Gif.h */,
+				69F7B3131AFF021E000471E1 /* Back.png */,
+				69F7B3111AFF014B000471E1 /* backSpace.png */,
+				69F7B30F1AFEFE2E000471E1 /* uppercase.png */,
+				69F7B30D1AFE99EB000471E1 /* search.png */,
+				696EFDBA1AFE8E2600396024 /* nextKeyboard.png */,
+				698279251B030B0D0043E8C7 /* SettingManager.h */,
+				698279261B030B0D0043E8C7 /* SettingManager.m */,
+				69BCF2C11AEF17530097B840 /* Gif.m */,
+				696EFDBC1AFE8F8500396024 /* UIColor+Flat.h */,
+				696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */,
+				69BCF2A21AEED1770097B840 /* Supporting Files */,
+			);
+			path = GIfKeyboard;
+			sourceTree = "<group>";
+		};
+		69BCF2A21AEED1770097B840 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				69BCF2A31AEED1770097B840 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2BADF7C77B62E595029B378 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B93ED4119B1EBBF5FE53846 /* libPods-GIfKeyboard.a */,
+				FFF4115C7795538B7DDCB68F /* libPods-SlackGifKeyboard.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,13 +286,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69BCF2961AEEBE1F0097B840 /* Build configuration list for PBXNativeTarget "SlackGifKeyboard" */;
 			buildPhases = (
+				278FA59C45A2EFD89608511C /* Check Pods Manifest.lock */,
 				69BCF26F1AEEBE1F0097B840 /* Sources */,
 				69BCF2701AEEBE1F0097B840 /* Frameworks */,
 				69BCF2711AEEBE1F0097B840 /* Resources */,
+				69BCF2AD1AEED1770097B840 /* Embed App Extensions */,
+				2907C1E56607731AD66230E5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				69BCF2A81AEED1770097B840 /* PBXTargetDependency */,
 			);
 			name = SlackGifKeyboard;
 			productName = SlackGifKeyboard;
@@ -157,6 +321,25 @@
 			productReference = 69BCF28C1AEEBE1F0097B840 /* SlackGifKeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		69BCF29F1AEED1770097B840 /* GIfKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69BCF2AA1AEED1770097B840 /* Build configuration list for PBXNativeTarget "GIfKeyboard" */;
+			buildPhases = (
+				022DC33C13DD0610AB282E8E /* Check Pods Manifest.lock */,
+				69BCF29C1AEED1770097B840 /* Sources */,
+				69BCF29D1AEED1770097B840 /* Frameworks */,
+				69BCF29E1AEED1770097B840 /* Resources */,
+				3D2CCEC62C9B32099F23DD4D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GIfKeyboard;
+			productName = GIfKeyboard;
+			productReference = 69BCF2A01AEED1770097B840 /* GIfKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +351,25 @@
 				TargetAttributes = {
 					69BCF2721AEEBE1F0097B840 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = KEC75NKTD9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					69BCF28B1AEEBE1F0097B840 = {
 						CreatedOnToolsVersion = 6.3;
 						TestTargetID = 69BCF2721AEEBE1F0097B840;
+					};
+					69BCF29F1AEED1770097B840 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = KEC75NKTD9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -190,6 +388,7 @@
 			targets = (
 				69BCF2721AEEBE1F0097B840 /* SlackGifKeyboard */,
 				69BCF28B1AEEBE1F0097B840 /* SlackGifKeyboardTests */,
+				69BCF29F1AEED1770097B840 /* GIfKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -199,7 +398,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69BCF2821AEEBE1F0097B840 /* Main.storyboard in Resources */,
 				69BCF2871AEEBE1F0097B840 /* LaunchScreen.xib in Resources */,
 				69BCF2841AEEBE1F0097B840 /* Images.xcassets in Resources */,
 			);
@@ -212,16 +410,97 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		69BCF29E1AEED1770097B840 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69F7B3141AFF021E000471E1 /* Back.png in Resources */,
+				69F7B30E1AFE99EB000471E1 /* search.png in Resources */,
+				69F7B3101AFEFE2E000471E1 /* uppercase.png in Resources */,
+				69F7B3161AFF0320000471E1 /* Cancel.png in Resources */,
+				69F7B3121AFF014B000471E1 /* backSpace.png in Resources */,
+				696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		022DC33C13DD0610AB282E8E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		278FA59C45A2EFD89608511C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2907C1E56607731AD66230E5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlackGifKeyboard/Pods-SlackGifKeyboard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D2CCEC62C9B32099F23DD4D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GIfKeyboard/Pods-GIfKeyboard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		69BCF26F1AEEBE1F0097B840 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69BCF27F1AEEBE1F0097B840 /* ViewController.m in Sources */,
+				698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */,
+				69BCF27F1AEEBE1F0097B840 /* SettingViewController.m in Sources */,
 				69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */,
+				6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */,
+				69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */,
+				698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */,
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
+				696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +512,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		69BCF29C1AEED1770097B840 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */,
+				69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */,
+				6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */,
+				69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */,
+				696EFDBF1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
+				698279271B030B0D0043E8C7 /* SettingManager.m in Sources */,
+				69FD7F4E1AF1CF8F00EBE0B8 /* SearchKeyboardView.m in Sources */,
+				69BCF2C21AEF17530097B840 /* Gif.m in Sources */,
+				69BCF2A61AEED1770097B840 /* KeyboardViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -241,17 +536,14 @@
 			target = 69BCF2721AEEBE1F0097B840 /* SlackGifKeyboard */;
 			targetProxy = 69BCF28D1AEEBE1F0097B840 /* PBXContainerItemProxy */;
 		};
+		69BCF2A81AEED1770097B840 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69BCF29F1AEED1770097B840 /* GIfKeyboard */;
+			targetProxy = 69BCF2A71AEED1770097B840 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		69BCF2801AEEBE1F0097B840 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69BCF2811AEEBE1F0097B840 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		69BCF2851AEEBE1F0097B840 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -347,21 +639,31 @@
 		};
 		69BCF2971AEEBE1F0097B840 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F8BE7B2276907EE24FF7FD9 /* Pods-SlackGifKeyboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SlackGifKeyboard/SlackGifKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlackGifKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		69BCF2981AEEBE1F0097B840 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F094DF58E405225126EB71 /* Pods-SlackGifKeyboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SlackGifKeyboard/SlackGifKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlackGifKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -399,6 +701,40 @@
 			};
 			name = Release;
 		};
+		69BCF2AB1AEED1770097B840 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB7FC02CCC99597F41B1CEE2 /* Pods-GIfKeyboard.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GIfKeyboard/GIfKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GIfKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		69BCF2AC1AEED1770097B840 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0BB7ED82D7326BE470F400C /* Pods-GIfKeyboard.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GIfKeyboard/GIfKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = GIfKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -418,6 +754,7 @@
 				69BCF2981AEEBE1F0097B840 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		69BCF2991AEEBE1F0097B840 /* Build configuration list for PBXNativeTarget "SlackGifKeyboardTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +763,16 @@
 				69BCF29B1AEEBE1F0097B840 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69BCF2AA1AEED1770097B840 /* Build configuration list for PBXNativeTarget "GIfKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69BCF2AB1AEED1770097B840 /* Debug */,
+				69BCF2AC1AEED1770097B840 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

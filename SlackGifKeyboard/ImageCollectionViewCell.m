@@ -10,4 +10,31 @@
 
 @implementation ImageCollectionViewCell
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.imageView = [[UIImageView alloc] init];
+        [self addSubview:self.imageView];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        self.imageView = [[UIImageView alloc] init];
+        [self addSubview:self.imageView];
+    }
+    return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.imageView.frame = self.bounds;
+}
+
 @end

@@ -10,4 +10,8 @@
 
 @interface Gif : NSObject
 
+@property (nonatomic, copy) NSString *gifURL;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *smallGifURL;
+
 @end

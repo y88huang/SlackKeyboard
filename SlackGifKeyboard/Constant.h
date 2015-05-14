@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Constant : NSObject
-
-@end
+static NSString* const kSettingFileName = @"Settings.plist";
+static NSString* const kGroupIdentifier = @"group.com.KYH.SlackKeyboard";

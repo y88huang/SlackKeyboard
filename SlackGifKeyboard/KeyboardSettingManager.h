@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class KeyboardStyle;
 @interface KeyboardSettingManager : NSObject
+
++ (instancetype)sharedInstance;
+- (NSArray *)getDefaultStyleOptions;
+- (void)saveSytleSetting:(KeyboardStyle *)style;
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class KeyboardStyle;
 @interface SettingManager : NSObject
+
++ (instancetype)sharedInstance;
+
+- (KeyboardStyle *)keyboardSetting;
+
+- (void)updateSetting;
 
 @end

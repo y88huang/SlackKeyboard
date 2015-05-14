@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface KeyboardStyle : NSObject
+@interface KeyboardStyle : NSObject<NSCoding>
+
+@property (nonatomic, copy) NSString *styleName;
+@property (nonatomic, copy) NSString *previewImageName;
+@property (nonatomic, strong) UIColor *themeColor;
+@property (nonatomic, strong) UIColor *tintColor;
+
+- (instancetype)initWithName:(NSString *)styleName
+            previewImageName:(NSString *)imageName
+                  themeColor:(UIColor *)themeColor
+                   tintColor:(UIColor *)tintColor;
 
 @end
