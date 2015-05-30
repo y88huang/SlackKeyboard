@@ -48,13 +48,30 @@ typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor peterRiver];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.titles.count;
 }
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    UITableViewHeaderFooterView *view = (UITableViewHeaderFooterView *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"footer"];
+//    if (!view.backgroundView) {
+//        view.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"giphy_horizontal.gif"]];
+//        view.backgroundView.backgroundColor = [UIColor redColor];
+//    }
+//    return view;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 60.0f;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

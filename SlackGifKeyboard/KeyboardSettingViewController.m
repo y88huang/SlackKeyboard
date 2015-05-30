@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "KeyboardSettingManager.h"
 #import "KeyboardStyle.h"
+#import "UIColor+Flat.h"
 
 @interface KeyboardSettingViewController()<UITableViewDataSource, UITableViewDelegate>
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor peterRiver];
     [self setupTableView];
 }
 
@@ -36,6 +37,8 @@
         make.top.equalTo(self.view.mas_top);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
+    self.tableView.backgroundView = [UIView new];
+    self.tableView.backgroundView.backgroundColor = [UIColor redColor];
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
@@ -59,7 +62,6 @@
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:40.0f];
     cell.textLabel.textColor = [UIColor whiteColor];
-//    cell.backgroundColor = indexPath.row % 2 == 0 ? [UIColor redColor] : [UIColor blueColor];
     KeyboardStyle *style = [[KeyboardSettingManager sharedInstance] getDefaultStyleOptions][indexPath.row];
     cell.textLabel.text = style.styleName;
     cell.contentView.backgroundColor = style.themeColor;

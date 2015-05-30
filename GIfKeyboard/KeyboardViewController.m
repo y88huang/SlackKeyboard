@@ -16,6 +16,8 @@
 #import "UIColor+Flat.h"
 #import "SettingManager.h"
 #import "KeyboardStyle.h"
+#import "ShareView.h"
+#import "TrendingImageManager.h"
 
 const static CGFloat kButtonPanelHeight = 35.0f;
 const static CGFloat kButtonPadding = 4.0f;
@@ -24,18 +26,18 @@ const static CGFloat kButtonWidth = 40.0f;
 @interface KeyboardViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchKeybardViewProtocol>
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 @property (nonatomic, strong) UIButton *searchGifButton;
-
+@property (nonatomic, strong) UIButton *trendingGifButton;
+@property (nonatomic, strong) UIImageView *giphyBanner;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *animatedGIFs;
 
-@property (nonatomic, strong) UIButton *capButton;
-@property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) SearchKeyboardView *kbView;
 
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) UIView *bottomPanel;
 @property (nonatomic, strong) UILabel *keywordLabel;
 @property (nonatomic, strong) KeyboardStyle *style;
+@property (nonatomic, strong) ShareView *shareView;
 
 @end
 
@@ -67,12 +69,15 @@ const static CGFloat kButtonWidth = 40.0f;
     // Perform custom UI setup here
     [[SettingManager sharedInstance] updateSetting];
     self.style = [[SettingManager sharedInstance] keyboardSetting];
+    [self setupGiphyBanner];
     [self setupCollectionView];
     [self setupKeyBoardView];
     [self setupBottomPanel];
-
     _expandedHeight = 216.0;
     self.view.backgroundColor = [UIColor blackColor];
+    self.shareView = [[ShareView alloc] init];
+//    self.shareView.hidden = YES;
+    [self.collectionView addSubview:self.shareView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -84,16 +89,21 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self fetchTrendingGifs];
+}
+
+- (void)fetchTrendingGifs
+{
     __weak typeof(self) weakSelf = self;
     [[GifManager sharedManager] getTrendingGifonSuccess:^(NSArray *gifs, id responseObject) {
         typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.animatedGIFs removeAllObjects];
         [strongSelf.animatedGIFs addObjectsFromArray:gifs];
         [strongSelf.collectionView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
 }
-
 #pragma mark -
 #pragma mark - setup code
 
@@ -101,6 +111,7 @@ const static CGFloat kButtonWidth = 40.0f;
 {
     self.keywordLabel = [[UILabel alloc] init];
     self.keywordLabel.textColor = [UIColor whiteColor];
+    self.keywordLabel.font = [UIFont fontWithName:@"Avenir-Black" size:20.0f];
     self.keywordLabel.text = @"#Trending 20";
     [self.bottomPanel addSubview:self.keywordLabel];
     [self.keywordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,6 +119,19 @@ const static CGFloat kButtonWidth = 40.0f;
         make.top.equalTo(self.bottomPanel.mas_top);
         make.bottom.equalTo(self.bottomPanel.mas_bottom);
         make.width.equalTo(self.bottomPanel.mas_width).dividedBy(2.0f);
+    }];
+}
+
+- (void)setupGiphyBanner
+{
+    self.giphyBanner = [[UIImageView alloc] init];
+    self.giphyBanner.image = [UIImage imageNamed:@"giphy_verticle.gif"];
+    [self.view addSubview:self.giphyBanner];
+    [self.giphyBanner mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.width.equalTo(@(30.0f));
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
     }];
 }
 
@@ -124,6 +148,7 @@ const static CGFloat kButtonWidth = 40.0f;
     }];
     [self setupNextKey];
     [self setupSearchKey];
+    [self setupTrendingKey];
     [self setupKeywordLabel];
 }
 
@@ -179,19 +204,41 @@ const static CGFloat kButtonWidth = 40.0f;
     }];
 }
 
+- (void)setupTrendingKey
+{
+    self.trendingGifButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.trendingGifButton.backgroundColor = [UIColor turquoise];
+    [self.trendingGifButton setImage:[UIImage imageNamed:@"Trend"] forState:UIControlStateNormal];
+    [self.trendingGifButton setTintColor:[UIColor whiteColor]];
+    [self.trendingGifButton addTarget:self action:@selector(showTrendingGifs:) forControlEvents:UIControlEventTouchUpInside];
+    self.trendingGifButton.layer.cornerRadius = 4.0f;
+    [self.bottomPanel addSubview:self.trendingGifButton];
+    
+    [self.trendingGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.searchGifButton.mas_right).with.offset(10.0f);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+}
+
 - (void)setupCollectionView
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressOnCollectionView:)];
+    longGesture.minimumPressDuration = 2.0f;
+    [self.collectionView addGestureRecognizer:longGesture];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = self.style.tintColor;
     [self.collectionView registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left);
+        make.left.equalTo(self.giphyBanner.mas_right);
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
     }];
@@ -231,7 +278,7 @@ const static CGFloat kButtonWidth = 40.0f;
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     NSInteger index = indexPath.section * 2 + indexPath.row;
     Gif *gif = self.animatedGIFs[index];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL] placeholderImage:[UIImage imageNamed:@"giphy_Logo2.gif"]];
     return cell;
 }
 
@@ -291,6 +338,42 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)searchForGif:(UIButton *)sender
 {
     [self showKeyboard];
+}
+
+- (void)showTrendingGifs:(UIButton *)sender
+{
+    [self fetchTrendingGifs];
+}
+
+- (void)didLongPressOnCollectionView:(UILongPressGestureRecognizer *)sender
+{
+    self.shareView.frame = self.collectionView.bounds;
+    switch (sender.state)
+    {
+        case UIGestureRecognizerStateBegan:
+        {
+            self.shareView.hidden = NO;
+            CGPoint location = [sender locationInView:self.collectionView];
+            NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+            if ([cell isKindOfClass:[ImageCollectionViewCell class]])
+            {
+                ImageCollectionViewCell *imageCell = (ImageCollectionViewCell *)cell;
+                if (imageCell.imageView.image)
+                {
+                    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+                    pasteBoard.image = imageCell.imageView.image;
+                    NSLog(@"Suceed!");
+                }
+            }
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+            self.shareView.hidden = YES;
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -

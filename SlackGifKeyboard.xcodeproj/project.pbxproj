@@ -11,11 +11,22 @@
 		696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 696EFDBA1AFE8E2600396024 /* nextKeyboard.png */; };
 		696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
 		696EFDBF1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
+		69755E7A1B193C2A00B706C3 /* giphy_Logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E791B193C2A00B706C3 /* giphy_Logo.gif */; };
+		69755E7B1B193C2A00B706C3 /* giphy_Logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E791B193C2A00B706C3 /* giphy_Logo.gif */; };
+		69755E7D1B193D9500B706C3 /* giphy_Logo2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E7C1B193D9500B706C3 /* giphy_Logo2.gif */; };
+		69755E7E1B193D9500B706C3 /* giphy_Logo2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E7C1B193D9500B706C3 /* giphy_Logo2.gif */; };
+		69755E861B19415000B706C3 /* giphy_verticle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E851B19415000B706C3 /* giphy_verticle.gif */; };
+		69755E871B19415000B706C3 /* giphy_verticle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E851B19415000B706C3 /* giphy_verticle.gif */; };
+		69755E891B19488700B706C3 /* giphy_horizontal.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E881B19488700B706C3 /* giphy_horizontal.gif */; };
+		69755E8A1B19488700B706C3 /* giphy_horizontal.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E881B19488700B706C3 /* giphy_horizontal.gif */; };
+		69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */; };
+		69755E8E1B194B1B00B706C3 /* TrendingImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */; };
 		6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */; };
 		698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
 		698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */; };
 		698279271B030B0D0043E8C7 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279261B030B0D0043E8C7 /* SettingManager.m */; };
 		6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
+		698279321B0581690043E8C7 /* Trend.png in Resources */ = {isa = PBXBuildFile; fileRef = 698279311B0581690043E8C7 /* Trend.png */; };
 		69BCF2791AEEBE1F0097B840 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2781AEEBE1F0097B840 /* main.m */; };
 		69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF27B1AEEBE1F0097B840 /* AppDelegate.m */; };
 		69BCF27F1AEEBE1F0097B840 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */; };
@@ -28,6 +39,7 @@
 		69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */; };
 		69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2BE1AEF15670097B840 /* GifManager.m */; };
 		69BCF2C21AEF17530097B840 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2C11AEF17530097B840 /* Gif.m */; };
+		69F774F41B12682700CE1AC6 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F774F31B12682700CE1AC6 /* ShareView.m */; };
 		69F7B30E1AFE99EB000471E1 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30D1AFE99EB000471E1 /* search.png */; };
 		69F7B3101AFEFE2E000471E1 /* uppercase.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30F1AFEFE2E000471E1 /* uppercase.png */; };
 		69F7B3121AFF014B000471E1 /* backSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B3111AFF014B000471E1 /* backSpace.png */; };
@@ -77,6 +89,12 @@
 		696EFDBA1AFE8E2600396024 /* nextKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextKeyboard.png; sourceTree = "<group>"; };
 		696EFDBC1AFE8F8500396024 /* UIColor+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Flat.h"; sourceTree = "<group>"; };
 		696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Flat.m"; sourceTree = "<group>"; };
+		69755E791B193C2A00B706C3 /* giphy_Logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy_Logo.gif; sourceTree = "<group>"; };
+		69755E7C1B193D9500B706C3 /* giphy_Logo2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy_Logo2.gif; sourceTree = "<group>"; };
+		69755E851B19415000B706C3 /* giphy_verticle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy_verticle.gif; sourceTree = "<group>"; };
+		69755E881B19488700B706C3 /* giphy_horizontal.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy_horizontal.gif; sourceTree = "<group>"; };
+		69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingImageManager.h; sourceTree = "<group>"; };
+		69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingImageManager.m; sourceTree = "<group>"; };
 		6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSettingViewController.h; sourceTree = "<group>"; };
 		6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSettingViewController.m; sourceTree = "<group>"; };
 		6982791E1B0288F60043E8C7 /* KeyboardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStyle.h; sourceTree = "<group>"; };
@@ -87,6 +105,7 @@
 		698279261B030B0D0043E8C7 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
 		698279281B038F240043E8C7 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		6982792B1B039A620043E8C7 /* GIfKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GIfKeyboard.entitlements; sourceTree = "<group>"; };
+		698279311B0581690043E8C7 /* Trend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trend.png; sourceTree = "<group>"; };
 		69BCF2731AEEBE1F0097B840 /* SlackGifKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackGifKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BCF2771AEEBE1F0097B840 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69BCF2781AEEBE1F0097B840 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -109,6 +128,8 @@
 		69BCF2BE1AEF15670097B840 /* GifManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManager.m; sourceTree = "<group>"; };
 		69BCF2C01AEF17530097B840 /* Gif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
 		69BCF2C11AEF17530097B840 /* Gif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
+		69F774F21B12682700CE1AC6 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
+		69F774F31B12682700CE1AC6 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		69F7B30D1AFE99EB000471E1 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		69F7B30F1AFEFE2E000471E1 /* uppercase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uppercase.png; sourceTree = "<group>"; };
 		69F7B3111AFF014B000471E1 /* backSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backSpace.png; sourceTree = "<group>"; };
@@ -159,6 +180,20 @@
 				81F094DF58E405225126EB71 /* Pods-SlackGifKeyboard.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		698279301B04FC030043E8C7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				698279311B0581690043E8C7 /* Trend.png */,
+				69F7B3151AFF0320000471E1 /* Cancel.png */,
+				69F7B3131AFF021E000471E1 /* Back.png */,
+				69F7B3111AFF014B000471E1 /* backSpace.png */,
+				69F7B30F1AFEFE2E000471E1 /* uppercase.png */,
+				69F7B30D1AFE99EB000471E1 /* search.png */,
+				696EFDBA1AFE8E2600396024 /* nextKeyboard.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		69BCF26A1AEEBE1F0097B840 = {
@@ -237,24 +272,27 @@
 			isa = PBXGroup;
 			children = (
 				6982792B1B039A620043E8C7 /* GIfKeyboard.entitlements */,
+				698279301B04FC030043E8C7 /* Assets */,
 				696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */,
 				696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */,
 				69BCF2A41AEED1770097B840 /* KeyboardViewController.h */,
 				69BCF2A51AEED1770097B840 /* KeyboardViewController.m */,
 				69FD7F4C1AF1CF8E00EBE0B8 /* SearchKeyboardView.h */,
 				69FD7F4D1AF1CF8F00EBE0B8 /* SearchKeyboardView.m */,
-				69F7B3151AFF0320000471E1 /* Cancel.png */,
+				69F774F21B12682700CE1AC6 /* ShareView.h */,
+				69F774F31B12682700CE1AC6 /* ShareView.m */,
 				69BCF2BD1AEF15670097B840 /* GifManager.h */,
 				69BCF2BE1AEF15670097B840 /* GifManager.m */,
 				69BCF2C01AEF17530097B840 /* Gif.h */,
-				69F7B3131AFF021E000471E1 /* Back.png */,
-				69F7B3111AFF014B000471E1 /* backSpace.png */,
-				69F7B30F1AFEFE2E000471E1 /* uppercase.png */,
-				69F7B30D1AFE99EB000471E1 /* search.png */,
-				696EFDBA1AFE8E2600396024 /* nextKeyboard.png */,
+				69755E881B19488700B706C3 /* giphy_horizontal.gif */,
+				69BCF2C11AEF17530097B840 /* Gif.m */,
+				69755E7C1B193D9500B706C3 /* giphy_Logo2.gif */,
+				69755E851B19415000B706C3 /* giphy_verticle.gif */,
+				69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */,
+				69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */,
 				698279251B030B0D0043E8C7 /* SettingManager.h */,
 				698279261B030B0D0043E8C7 /* SettingManager.m */,
-				69BCF2C11AEF17530097B840 /* Gif.m */,
+				69755E791B193C2A00B706C3 /* giphy_Logo.gif */,
 				696EFDBC1AFE8F8500396024 /* UIColor+Flat.h */,
 				696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */,
 				69BCF2A21AEED1770097B840 /* Supporting Files */,
@@ -398,6 +436,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69755E7A1B193C2A00B706C3 /* giphy_Logo.gif in Resources */,
+				69755E7D1B193D9500B706C3 /* giphy_Logo2.gif in Resources */,
+				69755E861B19415000B706C3 /* giphy_verticle.gif in Resources */,
+				69755E891B19488700B706C3 /* giphy_horizontal.gif in Resources */,
 				69BCF2871AEEBE1F0097B840 /* LaunchScreen.xib in Resources */,
 				69BCF2841AEEBE1F0097B840 /* Images.xcassets in Resources */,
 			);
@@ -415,11 +457,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				69F7B3141AFF021E000471E1 /* Back.png in Resources */,
+				69755E7B1B193C2A00B706C3 /* giphy_Logo.gif in Resources */,
 				69F7B30E1AFE99EB000471E1 /* search.png in Resources */,
 				69F7B3101AFEFE2E000471E1 /* uppercase.png in Resources */,
+				69755E871B19415000B706C3 /* giphy_verticle.gif in Resources */,
+				69755E7E1B193D9500B706C3 /* giphy_Logo2.gif in Resources */,
 				69F7B3161AFF0320000471E1 /* Cancel.png in Resources */,
 				69F7B3121AFF014B000471E1 /* backSpace.png in Resources */,
 				696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */,
+				698279321B0581690043E8C7 /* Trend.png in Resources */,
+				69755E8A1B19488700B706C3 /* giphy_horizontal.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +547,7 @@
 				69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */,
 				698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */,
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
+				69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,
 				696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,11 +566,13 @@
 			files = (
 				696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */,
 				69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */,
+				69F774F41B12682700CE1AC6 /* ShareView.m in Sources */,
 				6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */,
 				69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */,
 				696EFDBF1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
 				698279271B030B0D0043E8C7 /* SettingManager.m in Sources */,
 				69FD7F4E1AF1CF8F00EBE0B8 /* SearchKeyboardView.m in Sources */,
+				69755E8E1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,
 				69BCF2C21AEF17530097B840 /* Gif.m in Sources */,
 				69BCF2A61AEED1770097B840 /* KeyboardViewController.m in Sources */,
 			);

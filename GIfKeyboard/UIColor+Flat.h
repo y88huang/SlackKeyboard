@@ -26,6 +26,6 @@
 + (UIColor *)pomegranate;
 + (UIColor *)pumpkin;
 + (UIColor *)wisteria;
-
++ (UIColor *)deepWhite;
 + (UIColor *)randomFlatColor;
 @end

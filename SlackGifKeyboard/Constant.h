@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 
 static NSString* const kSettingFileName = @"Settings.plist";
+static NSString* const kUserImageTrending = @"Trending.plist";
 static NSString* const kGroupIdentifier = @"group.com.KYH.SlackKeyboard";

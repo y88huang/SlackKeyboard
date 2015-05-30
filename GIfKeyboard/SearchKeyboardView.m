@@ -11,6 +11,7 @@
 #import "UIColor+Flat.h"
 #import "SettingManager.h"
 #import "KeyboardStyle.h"
+#import "FlatUIKit.h"
 
 const static CGFloat kButtonPadding = 5.0f;
 
@@ -23,11 +24,11 @@ const static CGFloat kButtonPadding = 5.0f;
     UIView *_fourthRow;
     NSArray *_containers;
     
-    UIButton *_capButton;
-    UIButton *_deleteButton;
-    UIButton *_spaceButton;
-    UIButton *_returnButton;
-    UIButton *_nextButton;
+    FUIButton *_capButton;
+    FUIButton *_deleteButton;
+    FUIButton *_spaceButton;
+    FUIButton *_returnButton;
+    FUIButton *_nextButton;
     KeyboardStyle *_style;
     NSArray *_alphabeticalKeys;
     BOOL _isUpperCase;
@@ -40,12 +41,24 @@ const static CGFloat kButtonPadding = 5.0f;
     return self;
 }
 
+- (UIColor *)lighterColorForColor:(UIColor *)color byDegree:(CGFloat)degree
+{
+    CGFloat r, g, b, a;
+    if ([color getRed:&r green:&g blue:&b alpha: &a]){
+        return [UIColor colorWithRed:MAX(r - degree , 0.0f)
+                               green:MAX(g - degree, 0.0f)
+                                blue:MAX(b - degree, 0.0f)
+                               alpha:a];
+    }
+    return nil;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         _isUpperCase = YES;
-        self.backgroundColor = _style.themeColor;
+        self.backgroundColor = [self lighterColorForColor:_style.tintColor byDegree:0.4f];
         _firstRow = [[UIView alloc] init];
         _secondRow = [[UIView alloc] init];
         _thirdRow = [[UIView alloc] init];
@@ -56,6 +69,10 @@ const static CGFloat kButtonPadding = 5.0f;
         _textField.textColor = [UIColor darkGrayColor];
         _textField.text = @"";
         [self addSubview:_textField];
+        _textField.layer.borderColor = _style.themeColor.CGColor;
+        _textField.layer.borderWidth = 3.0f;
+        _textField.layer.cornerRadius = 4.0f;
+        _textField.textAlignment = NSTextAlignmentCenter;
         [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left);
             make.right.equalTo(self.mas_right);
@@ -84,13 +101,16 @@ const static CGFloat kButtonPadding = 5.0f;
 
 - (UIButton *)createButton:(NSString *)title
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    FUIButton *button = [FUIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:title forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor whiteColor];
-    [button setTitleColor:_style.tintColor forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.buttonColor = _style.tintColor;
     button.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20.0f];
     [button addTarget:self action:@selector(keyPressed:) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.cornerRadius = 4.0f;
+//    button.layer.cornerRadius = 4.0f;
+    button.cornerRadius = 6.0f;
+    button.shadowColor = _style.themeColor;
+    button.shadowHeight = 3.0f;
     return button;
 }
 
@@ -146,17 +166,18 @@ const static CGFloat kButtonPadding = 5.0f;
     _nextButton = [fourthRow firstObject];
     _capButton = [thirdRow firstObject];
     
-    [_capButton setImage:[UIImage imageNamed:@"uppercase"] forState:UIControlStateNormal];
-    [_capButton setTintColor:[UIColor airbnbPink]];
+    _capButton.imageName = @"uppercase";
     _capButton.imageEdgeInsets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
     
-    [_deleteButton setImage:[UIImage imageNamed:@"Back"] forState:UIControlStateNormal];
-    [_deleteButton setTintColor:[UIColor airbnbPink]];
+    _deleteButton.imageName = @"Back";
     _deleteButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 5.0f, 10.0f, 5.0f);
     
-    [_nextButton setImage:[UIImage imageNamed:@"Cancel"] forState:UIControlStateNormal];
-    [_nextButton setTintColor:[UIColor airbnbPink]];
+    _nextButton.imageName = @"Cancel";
+    
     _nextButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 20.0f, 10.0f, 20.0f);
+    
+    _returnButton.backgroundColor = [UIColor clearColor];
+    
     NSArray *buttons = @[firstRow, secondRow, thirdRow, fourthRow];
     
     [_containers enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {

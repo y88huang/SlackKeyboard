@@ -28,6 +28,7 @@
     }
     return self;
 }
+
 + (instancetype)sharedInstance
 {
     static dispatch_once_t token;

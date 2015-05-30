@@ -123,6 +123,11 @@ static unsigned int colors[] = {0x1abc9c, 0x3498db, 0x9b59b6, 0x34495e, 0x16a085
     return UIColorFromRGB(0x8e44ad);
 }
 
++ (UIColor *)deepWhite
+{
+    return UIColorFromRGB(0xfbf5e2);
+}
+
 + (UIColor *)randomFlatColor
 {
     NSUInteger random = arc4random_uniform(ARR_SIZE(colors));
