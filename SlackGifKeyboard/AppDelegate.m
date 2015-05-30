@@ -21,8 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[SettingViewController alloc] init];
     [self.window makeKeyAndVisible];
-   
-//    NSLog(@"%@",url);
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 

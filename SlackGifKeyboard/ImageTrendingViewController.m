@@ -11,6 +11,7 @@
 #import "ImageCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIColor+Flat.h"
+#import "GiphyHeader.h"
 
 @interface ImageTrendingViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -25,13 +26,14 @@
 {
     [super viewDidLoad];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.headerReferenceSize = CGSizeMake(0.0f, 70.0f);
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout: layout];
     [self.view addSubview:self.collectionView];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor belizeHole];
     [self.collectionView registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
+    [self.collectionView registerClass:[GiphyHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *button = [UIButton new];
@@ -54,6 +56,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    GiphyHeader *view = (GiphyHeader *)[collectionView dequeueReusableSupplementaryViewOfKind: UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+    view.imageView.image = [UIImage imageNamed:@"giphy_horizontal.gif"];
+    return view;
+}
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageCollectionViewCell *cell = (ImageCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -75,7 +83,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(40.0f, 0.0f, 0.0, 0.0f);
+    return UIEdgeInsetsMake(20.0f, 0.0f, 0.0, 0.0f);
 }
 
 @end
