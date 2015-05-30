@@ -22,14 +22,25 @@
     static TrendingImageManager *manager = nil;
     dispatch_once(&token, ^{
         manager = [[TrendingImageManager alloc] init];
-        manager.url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:kGroupIdentifier];
+        
+        NSURL *url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:kGroupIdentifier];
+        manager.url = [url URLByAppendingPathComponent:kUserImageTrending];
     });
     return manager;
 }
 
 - (void)addCountForGifURL:(NSString *)url
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfURL: [self.url URLByAppendingPathComponent:kUserImageTrending]];
+    if (!url)
+    {
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfURL: self.url];
+    
+    if (!dict)
+    {
+        dict = [[NSMutableDictionary alloc] init];
+    }
     NSNumber *count = dict[url];
     if (count)
     {
@@ -41,6 +52,13 @@
         dict[url] = @1;
     }
     [dict writeToURL:self.url atomically:YES];
+}
+
+- (NSArray *)getRecentImages
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfURL: self.url];
+    NSArray *keyList = dict.allKeys;
+    return keyList;
 }
 
 @end

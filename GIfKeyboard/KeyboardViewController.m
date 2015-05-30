@@ -296,6 +296,9 @@ const static CGFloat kButtonWidth = 40.0f;
 {
     Gif *gif = self.animatedGIFs[indexPath.section * 2 + indexPath.row];
     [self.textDocumentProxy insertText:gif.gifURL];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[TrendingImageManager sharedInstance] addCountForGifURL:gif.gifURL];
+    });
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

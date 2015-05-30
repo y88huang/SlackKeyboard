@@ -38,7 +38,7 @@
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     self.tableView.backgroundView = [UIView new];
-    self.tableView.backgroundView.backgroundColor = [UIColor redColor];
+    self.tableView.backgroundView.backgroundColor = [UIColor turquoise];
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;

@@ -21,6 +21,7 @@
 		69755E8A1B19488700B706C3 /* giphy_horizontal.gif in Resources */ = {isa = PBXBuildFile; fileRef = 69755E881B19488700B706C3 /* giphy_horizontal.gif */; };
 		69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */; };
 		69755E8E1B194B1B00B706C3 /* TrendingImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */; };
+		69755E911B19548200B706C3 /* ImageTrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E901B19548200B706C3 /* ImageTrendingViewController.m */; };
 		6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */; };
 		698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
 		698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */; };
@@ -95,6 +96,8 @@
 		69755E881B19488700B706C3 /* giphy_horizontal.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy_horizontal.gif; sourceTree = "<group>"; };
 		69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingImageManager.h; sourceTree = "<group>"; };
 		69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingImageManager.m; sourceTree = "<group>"; };
+		69755E8F1B19548200B706C3 /* ImageTrendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTrendingViewController.h; sourceTree = "<group>"; };
+		69755E901B19548200B706C3 /* ImageTrendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTrendingViewController.m; sourceTree = "<group>"; };
 		6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSettingViewController.h; sourceTree = "<group>"; };
 		6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSettingViewController.m; sourceTree = "<group>"; };
 		6982791E1B0288F60043E8C7 /* KeyboardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStyle.h; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */,
 				69BCF27D1AEEBE1F0097B840 /* SettingViewController.h */,
 				69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */,
+				69755E8F1B19548200B706C3 /* ImageTrendingViewController.h */,
+				69755E901B19548200B706C3 /* ImageTrendingViewController.m */,
 				69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */,
 				69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */,
 				698279211B028A4E0043E8C7 /* KeyboardSettingManager.h */,
@@ -545,6 +550,7 @@
 				69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */,
 				6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */,
 				69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */,
+				69755E911B19548200B706C3 /* ImageTrendingViewController.m in Sources */,
 				698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */,
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
 				69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,

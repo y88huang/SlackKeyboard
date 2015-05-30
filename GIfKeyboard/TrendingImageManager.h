@@ -12,4 +12,6 @@
 
 + (instancetype)sharedInstance;
 
+- (NSArray *)getRecentImages;
+- (void)addCountForGifURL:(NSString *)url;
 @end

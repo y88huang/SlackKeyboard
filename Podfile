@@ -4,6 +4,7 @@
 target 'SlackGifKeyboard' do
 
 pod 'Masonry'
+pod 'SDWebImage', '~>3.7'
 
 end
 

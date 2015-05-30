@@ -8,8 +8,10 @@
 
 #import "SettingViewController.h"
 #import "Masonry.h"
+
 #import "UIColor+Flat.h"
 #import "KeyboardSettingViewController.h"
+#import "ImageTrendingViewController.h"
 
 typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
 {
@@ -104,7 +106,10 @@ typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
             break;
         case SlackKeyboardTrending:
         {
-            
+            ImageTrendingViewController *trending = [[ImageTrendingViewController alloc] init];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:trending animated:YES completion:nil];
+            });
         }
             break;
         case SlackKeyboardDIY:
