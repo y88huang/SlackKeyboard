@@ -38,6 +38,7 @@ const static CGFloat kButtonWidth = 40.0f;
 @property (nonatomic, strong) UILabel *keywordLabel;
 @property (nonatomic, strong) KeyboardStyle *style;
 @property (nonatomic, strong) ShareView *shareView;
+@property (nonatomic, strong) UIImage *placeHolderImage;
 
 @end
 
@@ -78,6 +79,7 @@ const static CGFloat kButtonWidth = 40.0f;
     self.shareView = [[ShareView alloc] init];
 //    self.shareView.hidden = YES;
     [self.collectionView addSubview:self.shareView];
+//    self.placeHolderImage = [UIImage imageNamed:@"giphy_Logo2.gif"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -278,7 +280,7 @@ const static CGFloat kButtonWidth = 40.0f;
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     NSInteger index = indexPath.section * 2 + indexPath.row;
     Gif *gif = self.animatedGIFs[index];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL] placeholderImage:[UIImage imageNamed:@"giphy_Logo2.gif"]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL]];
     return cell;
 }
 

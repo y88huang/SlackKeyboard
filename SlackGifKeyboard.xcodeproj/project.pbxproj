@@ -23,6 +23,12 @@
 		69755E8E1B194B1B00B706C3 /* TrendingImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */; };
 		69755E911B19548200B706C3 /* ImageTrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E901B19548200B706C3 /* ImageTrendingViewController.m */; };
 		69755E9A1B19775B00B706C3 /* GiphyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E991B19775B00B706C3 /* GiphyHeader.m */; };
+		69755E9F1B197B1B00B706C3 /* DIYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755E9E1B197B1B00B706C3 /* DIYViewController.m */; };
+		69755EA21B1B874100B706C3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EA01B1B872300B706C3 /* CoreMedia.framework */; };
+		69755EA41B1B87F900B706C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EA31B1B87F900B706C3 /* AVFoundation.framework */; };
+		69755EA91B1D7E4F00B706C3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EA81B1D7E4F00B706C3 /* ImageIO.framework */; };
+		69755EAB1B1D7E5700B706C3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EAA1B1D7E5700B706C3 /* MobileCoreServices.framework */; };
+		69755EAE1B1E109400B706C3 /* AnimatedImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */; };
 		6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */; };
 		698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
 		698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */; };
@@ -101,6 +107,14 @@
 		69755E901B19548200B706C3 /* ImageTrendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTrendingViewController.m; sourceTree = "<group>"; };
 		69755E981B19775B00B706C3 /* GiphyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyHeader.h; sourceTree = "<group>"; };
 		69755E991B19775B00B706C3 /* GiphyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyHeader.m; sourceTree = "<group>"; };
+		69755E9D1B197B1B00B706C3 /* DIYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYViewController.h; sourceTree = "<group>"; };
+		69755E9E1B197B1B00B706C3 /* DIYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIYViewController.m; sourceTree = "<group>"; };
+		69755EA01B1B872300B706C3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		69755EA31B1B87F900B706C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		69755EA81B1D7E4F00B706C3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		69755EAA1B1D7E5700B706C3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		69755EAC1B1E109400B706C3 /* AnimatedImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedImageManager.h; sourceTree = "<group>"; };
+		69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedImageManager.m; sourceTree = "<group>"; };
 		6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSettingViewController.h; sourceTree = "<group>"; };
 		6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSettingViewController.m; sourceTree = "<group>"; };
 		6982791E1B0288F60043E8C7 /* KeyboardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStyle.h; sourceTree = "<group>"; };
@@ -155,6 +169,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69755EAB1B1D7E5700B706C3 /* MobileCoreServices.framework in Frameworks */,
+				69755EA91B1D7E4F00B706C3 /* ImageIO.framework in Frameworks */,
+				69755EA41B1B87F900B706C3 /* AVFoundation.framework in Frameworks */,
+				69755EA21B1B874100B706C3 /* CoreMedia.framework in Frameworks */,
 				88862DAD0E54B7C16DFF54A5 /* libPods-SlackGifKeyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +215,32 @@
 				69755E851B19415000B706C3 /* giphy_verticle.gif */,
 			);
 			name = gifLogos;
+			sourceTree = "<group>";
+		};
+		69755E9B1B197A9900B706C3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */,
+				6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */,
+				69755E9D1B197B1B00B706C3 /* DIYViewController.h */,
+				69755E9E1B197B1B00B706C3 /* DIYViewController.m */,
+				69BCF27D1AEEBE1F0097B840 /* SettingViewController.h */,
+				69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */,
+				69755E8F1B19548200B706C3 /* ImageTrendingViewController.h */,
+				69755E901B19548200B706C3 /* ImageTrendingViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		69755E9C1B197AAC00B706C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				69755E981B19775B00B706C3 /* GiphyHeader.h */,
+				69755E991B19775B00B706C3 /* GiphyHeader.m */,
+				69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */,
+				69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		698279301B04FC030043E8C7 /* Assets */ = {
@@ -243,18 +287,12 @@
 				69BCF27B1AEEBE1F0097B840 /* AppDelegate.m */,
 				6982791E1B0288F60043E8C7 /* KeyboardStyle.h */,
 				6982791F1B0288F60043E8C7 /* KeyboardStyle.m */,
-				6982791B1B0284430043E8C7 /* KeyboardSettingViewController.h */,
-				6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */,
-				69BCF27D1AEEBE1F0097B840 /* SettingViewController.h */,
-				69BCF27E1AEEBE1F0097B840 /* SettingViewController.m */,
-				69755E8F1B19548200B706C3 /* ImageTrendingViewController.h */,
-				69755E901B19548200B706C3 /* ImageTrendingViewController.m */,
-				69755E981B19775B00B706C3 /* GiphyHeader.h */,
-				69755E991B19775B00B706C3 /* GiphyHeader.m */,
-				69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */,
-				69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */,
+				69755E9B1B197A9900B706C3 /* ViewControllers */,
+				69755E9C1B197AAC00B706C3 /* Views */,
 				698279211B028A4E0043E8C7 /* KeyboardSettingManager.h */,
 				698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */,
+				69755EAC1B1E109400B706C3 /* AnimatedImageManager.h */,
+				69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */,
 				69BCF2831AEEBE1F0097B840 /* Images.xcassets */,
 				698279281B038F240043E8C7 /* Constant.h */,
 				69BCF2851AEEBE1F0097B840 /* LaunchScreen.xib */,
@@ -329,6 +367,10 @@
 		D2BADF7C77B62E595029B378 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69755EAA1B1D7E5700B706C3 /* MobileCoreServices.framework */,
+				69755EA81B1D7E4F00B706C3 /* ImageIO.framework */,
+				69755EA31B1B87F900B706C3 /* AVFoundation.framework */,
+				69755EA01B1B872300B706C3 /* CoreMedia.framework */,
 				8B93ED4119B1EBBF5FE53846 /* libPods-GIfKeyboard.a */,
 				FFF4115C7795538B7DDCB68F /* libPods-SlackGifKeyboard.a */,
 			);
@@ -561,10 +603,12 @@
 				698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */,
 				69BCF27F1AEEBE1F0097B840 /* SettingViewController.m in Sources */,
 				69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */,
+				69755EAE1B1E109400B706C3 /* AnimatedImageManager.m in Sources */,
 				6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */,
 				69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */,
 				69755E911B19548200B706C3 /* ImageTrendingViewController.m in Sources */,
 				698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */,
+				69755E9F1B197B1B00B706C3 /* DIYViewController.m in Sources */,
 				69755E9A1B19775B00B706C3 /* GiphyHeader.m in Sources */,
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
 				69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,

@@ -12,6 +12,7 @@
 #import "UIColor+Flat.h"
 #import "KeyboardSettingViewController.h"
 #import "ImageTrendingViewController.h"
+#import "DIYViewController.h"
 
 typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
 {
@@ -114,7 +115,10 @@ typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
             break;
         case SlackKeyboardDIY:
         {
-            
+            DIYViewController *diyVC = [[DIYViewController alloc] init];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:diyVC animated:YES completion:nil];
+            });
         }
             break;
     }
