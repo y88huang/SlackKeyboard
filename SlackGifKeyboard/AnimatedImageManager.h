@@ -11,5 +11,8 @@
 @interface AnimatedImageManager : NSObject
 
 + (instancetype)sharedInstance;
+- (NSString *)exportImages:(NSArray *)images;
+- (NSArray *)getLocalImages;
+- (NSArray *)getGifs;
 
 @end

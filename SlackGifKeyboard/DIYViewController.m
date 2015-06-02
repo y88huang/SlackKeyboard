@@ -12,6 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "AnimatedImageManager.h"
 
 @interface DIYViewController () <AVCaptureFileOutputRecordingDelegate>
 
@@ -212,23 +213,25 @@
         AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
         generator.appliesPreferredTrackTransform = YES;
         CMTime duration = asset.duration;
-        int framePerSec = 5;
+        int framePerSec = 12;
         int totalFrame = floorf(CMTimeGetSeconds(duration)) * framePerSec;
 
         NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:10];
         for (int i = 0; i < totalFrame; i++){
             CMTime actualTime;
-            CMTime time = CMTimeMake(i, 5.0);
+            CMTime time = CMTimeMake(i, 12.0);
             CGImageRef ref = [generator copyCGImageAtTime:time actualTime:&actualTime error:nil];
             UIImage *image = [[UIImage alloc] initWithCGImage:ref];
             [images addObject:image];
             CGImageRelease(ref);
         }
-        NSString *path = makeGif(images);
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
-        UIImage *im = [UIImage animatedImageWithImages:images duration:3.0f];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:im];
-        [self.view addSubview:imageView];
+        
+        [[AnimatedImageManager sharedInstance] exportImages:images];
+//        NSString *path = makeGif(images);
+//        UIImage *image = [UIImage imageWithContentsOfFile:path];
+//        UIImage *im = [UIImage animatedImageWithImages:images duration:3.0f];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:im];
+//        [self.view addSubview:imageView];
     }
 }
 

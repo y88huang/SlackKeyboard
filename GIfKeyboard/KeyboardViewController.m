@@ -18,6 +18,7 @@
 #import "KeyboardStyle.h"
 #import "ShareView.h"
 #import "TrendingImageManager.h"
+#import "AnimatedImageManager.h"
 
 const static CGFloat kButtonPanelHeight = 35.0f;
 const static CGFloat kButtonPadding = 4.0f;
@@ -27,6 +28,7 @@ const static CGFloat kButtonWidth = 40.0f;
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 @property (nonatomic, strong) UIButton *searchGifButton;
 @property (nonatomic, strong) UIButton *trendingGifButton;
+//@property (nonatomic, strong) UIButton *customGifButton;
 @property (nonatomic, strong) UIImageView *giphyBanner;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *animatedGIFs;
@@ -280,7 +282,7 @@ const static CGFloat kButtonWidth = 40.0f;
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     NSInteger index = indexPath.section * 2 + indexPath.row;
     Gif *gif = self.animatedGIFs[index];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:gif.smallGifURL]];
+    [cell.imageView setImageWithURL:gif.smallGifURL];
     return cell;
 }
 
@@ -297,9 +299,9 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Gif *gif = self.animatedGIFs[indexPath.section * 2 + indexPath.row];
-    [self.textDocumentProxy insertText:gif.gifURL];
+    [self.textDocumentProxy insertText:gif.gifURL.path];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[TrendingImageManager sharedInstance] addCountForGifURL:gif.gifURL];
+        [[TrendingImageManager sharedInstance] addCountForGifURL:gif.gifURL.path];
     });
 }
 
@@ -347,7 +349,11 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)showTrendingGifs:(UIButton *)sender
 {
-    [self fetchTrendingGifs];
+//    [self fetchTrendingGifs];
+    NSArray *images = [[AnimatedImageManager sharedInstance] getGifs];
+    [self.animatedGIFs removeAllObjects];
+    [self.animatedGIFs addObjectsFromArray:images];
+    [self.collectionView reloadData];
 }
 
 - (void)didLongPressOnCollectionView:(UILongPressGestureRecognizer *)sender

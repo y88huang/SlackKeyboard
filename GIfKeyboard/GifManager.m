@@ -32,8 +32,8 @@
             NSDictionary *images = dict[@"images"];
             NSString *url = images[@"downsized"][@"url"];
             NSString *downSized = images[@"fixed_height_downsampled"][@"url"];
-            gif.gifURL = url;
-            gif.smallGifURL = downSized;
+            gif.gifURL = [NSURL URLWithString: url];
+            gif.smallGifURL = [NSURL URLWithString: downSized];
             [array addObject:gif];
         }
         if (sucess)
@@ -63,8 +63,8 @@
             NSDictionary *images = dict[@"images"];
             NSString *url = images[@"downsized"][@"url"];
             NSString *downSized = images[@"fixed_height_downsampled"][@"url"];
-            gif.gifURL = url;
-            gif.smallGifURL = downSized;
+            gif.gifURL = [NSURL URLWithString: url];
+            gif.smallGifURL = [NSURL URLWithString: downSized];
             [array addObject:gif];
         }
         if (sucess)

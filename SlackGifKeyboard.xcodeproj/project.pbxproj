@@ -29,6 +29,8 @@
 		69755EA91B1D7E4F00B706C3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EA81B1D7E4F00B706C3 /* ImageIO.framework */; };
 		69755EAB1B1D7E5700B706C3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69755EAA1B1D7E5700B706C3 /* MobileCoreServices.framework */; };
 		69755EAE1B1E109400B706C3 /* AnimatedImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */; };
+		69755EAF1B1E398100B706C3 /* AnimatedImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */; };
+		69755EB01B1E43C200B706C3 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2C11AEF17530097B840 /* Gif.m */; };
 		6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791C1B0284430043E8C7 /* KeyboardSettingViewController.m */; };
 		698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6982791F1B0288F60043E8C7 /* KeyboardStyle.m */; };
 		698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */; };
@@ -246,6 +248,7 @@
 		698279301B04FC030043E8C7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				69755E941B19753800B706C3 /* gifLogos */,
 				698279311B0581690043E8C7 /* Trend.png */,
 				69F7B3151AFF0320000471E1 /* Cancel.png */,
 				69F7B3131AFF021E000471E1 /* Back.png */,
@@ -343,7 +346,6 @@
 				69BCF2BD1AEF15670097B840 /* GifManager.h */,
 				69BCF2BE1AEF15670097B840 /* GifManager.m */,
 				69BCF2C01AEF17530097B840 /* Gif.h */,
-				69755E941B19753800B706C3 /* gifLogos */,
 				69BCF2C11AEF17530097B840 /* Gif.m */,
 				69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */,
 				69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */,
@@ -602,6 +604,7 @@
 			files = (
 				698279201B0288F60043E8C7 /* KeyboardStyle.m in Sources */,
 				69BCF27F1AEEBE1F0097B840 /* SettingViewController.m in Sources */,
+				69755EB01B1E43C200B706C3 /* Gif.m in Sources */,
 				69BCF27C1AEEBE1F0097B840 /* AppDelegate.m in Sources */,
 				69755EAE1B1E109400B706C3 /* AnimatedImageManager.m in Sources */,
 				6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */,
@@ -630,6 +633,7 @@
 			files = (
 				696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */,
 				69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */,
+				69755EAF1B1E398100B706C3 /* AnimatedImageManager.m in Sources */,
 				69F774F41B12682700CE1AC6 /* ShareView.m in Sources */,
 				6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */,
 				69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */,
