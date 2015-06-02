@@ -8,10 +8,14 @@
 
 #import "AnimatedImageManager.h"
 #import "Constant.h"
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <UIKit/UIKit.h>
 
 @interface AnimatedImageManager()
 
 @property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSDateFormatter *formatter;
 
 @end
 
@@ -23,6 +27,8 @@
     if (self)
     {
         self.url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:kGroupIdentifier];
+        self.formatter = [[NSDateFormatter alloc] init];
+        [self.formatter setDateFormat:@"yyyy-MM-dd_HH_mm_ss"];
     }
     return self;
 }
@@ -35,6 +41,45 @@
         manager = [[AnimatedImageManager alloc] init];
     });
     return manager;
+}
+
+- (void)saveImages:(NSArray *)images
+{
+    NSDate *date = [NSDate date];
+    NSString *fileName = [NSString stringWithFormat:@"Gif-%@",[self.formatter stringFromDate:date]];
+    NSString *folderName = [kGifFolderName stringByAppendingPathComponent:fileName];
+    NSURL *fileURL = [self.url URLByAppendingPathComponent:folderName];
+    
+    makeGif(images, fileURL);
+}
+
+static NSString *makeGif(NSArray *images, NSURL *exportURL){
+    NSUInteger const kFrameCount = images.count;
+    NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary: @{
+                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0
+                                             }
+                                     };
+    NSDictionary *frameProperties = @{
+                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.02f
+                                              }
+                                      };
+    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)exportURL, kUTTypeGIF, kFrameCount, NULL);
+    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
+    for (NSUInteger i = 0; i < kFrameCount; i++) {
+        @autoreleasepool {
+            UIImage *image = images[i];
+            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
+        }
+    }
+    
+    if (!CGImageDestinationFinalize(destination)) {
+        NSLog(@"failed to finalize image destination");
+    }
+    CFRelease(destination);
+    
+    NSLog(@"url=%@", exportURL);
+    return exportURL.path;
 }
 
 @end

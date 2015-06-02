@@ -10,4 +10,5 @@
 
 static NSString* const kSettingFileName = @"Settings.plist";
 static NSString* const kUserImageTrending = @"Trending.plist";
+static NSString* const kGifFolderName = @"AnimatedImages";
 static NSString* const kGroupIdentifier = @"group.com.KYH.SlackKeyboard";
