@@ -227,43 +227,7 @@
         }
         
         [[AnimatedImageManager sharedInstance] exportImages:images];
-//        NSString *path = makeGif(images);
-//        UIImage *image = [UIImage imageWithContentsOfFile:path];
-//        UIImage *im = [UIImage animatedImageWithImages:images duration:3.0f];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:im];
-//        [self.view addSubview:imageView];
     }
-}
-
-static NSString *makeGif(NSArray *images){
-    NSUInteger const kFrameCount = images.count;
-    NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary: @{
-                                             (__bridge id)kCGImagePropertyGIFLoopCount: @0
-                                             }
-                                     };
-    NSDictionary *frameProperties = @{
-                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.02f
-                                              }
-                                      };
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
-    CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
-    for (NSUInteger i = 0; i < kFrameCount; i++) {
-        @autoreleasepool {
-            UIImage *image = images[i];
-            CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
-        }
-    }
-    
-    if (!CGImageDestinationFinalize(destination)) {
-        NSLog(@"failed to finalize image destination");
-    }
-    CFRelease(destination);
-    
-    NSLog(@"url=%@", fileURL);
-    return fileURL.path;
 }
 
 @end
