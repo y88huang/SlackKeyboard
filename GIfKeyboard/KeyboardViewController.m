@@ -8,7 +8,6 @@
 
 #import "KeyboardViewController.h"
 #import "ImageCollectionViewCell.h"
-#import "UIImageView+AFNetworking.h"
 #import "GifManager.h"
 #import "Gif.h"
 #import "Masonry.h"
@@ -19,6 +18,9 @@
 #import "ShareView.h"
 #import "TrendingImageManager.h"
 #import "AnimatedImageManager.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImage+Gif.h"
+#import "AnimatedGIFImageSerialization.h"
 
 const static CGFloat kButtonPanelHeight = 35.0f;
 const static CGFloat kButtonPadding = 4.0f;
@@ -282,7 +284,19 @@ const static CGFloat kButtonWidth = 40.0f;
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     NSInteger index = indexPath.section * 2 + indexPath.row;
     Gif *gif = self.animatedGIFs[index];
-    [cell.imageView setImageWithURL:gif.smallGifURL];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    if ([gif.smallGifURL isFileURL])
+    {
+//        cell.imageView.image = [UIImage sd_animatedGIFWithData:[NSData dataWithContentsOfURL:gif.smallGifURL]];
+//        cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:gif.smallGifURL.path];
+        NSData *data = [NSData dataWithContentsOfURL:gif.smallGifURL];
+        UIImage *image = [UIImage sd_animatedGIFWithData:data];
+        UIImage *image2 = [image sd_animatedImageByScalingAndCroppingToSize:CGSizeMake(200.0f, 100.0f)];
+        cell.imageView.image = image2;
+    }else{
+        [cell.imageView setImageWithURL:gif.smallGifURL];
+    }
+    
     return cell;
 }
 
@@ -299,9 +313,9 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Gif *gif = self.animatedGIFs[indexPath.section * 2 + indexPath.row];
-    [self.textDocumentProxy insertText:gif.gifURL.path];
+    [self.textDocumentProxy insertText:[gif.gifURL absoluteString]];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[TrendingImageManager sharedInstance] addCountForGifURL:gif.gifURL.path];
+        [[TrendingImageManager sharedInstance] addCountForGifURL:[gif.gifURL absoluteString]];
     });
 }
 
@@ -312,12 +326,12 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.animatedGIFs.count % 2 + 1;
+    return (section + 1) * 2 <= self.animatedGIFs.count ? 2 : 1;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.animatedGIFs.count / 2;
+    return self.animatedGIFs.count / 2 + (self.animatedGIFs.count % 2);
 }
 
 #pragma mark Helpers
@@ -374,7 +388,14 @@ const static CGFloat kButtonWidth = 40.0f;
                 {
                     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
                     pasteBoard.image = imageCell.imageView.image;
+                    
+                    UIImage *image = imageCell.imageView.image;
+                    
+                    NSLog(@"size is %@",  [NSValue valueWithCGSize:image.size]);
+                    NSData *data = [AnimatedGIFImageSerialization animatedGIFDataWithImage:image error:nil];
+                    [pasteBoard setData:data forPasteboardType:@"com.compuserve.gif"];
                     NSLog(@"Suceed!");
+                    data = nil;
                 }
             }
         }

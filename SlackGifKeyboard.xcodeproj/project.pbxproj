@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		696D42691B2DDBC30081252A /* FrameSelectorLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 696D42681B2DDBC30081252A /* FrameSelectorLayout.m */; };
 		696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */; };
 		696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 696EFDBA1AFE8E2600396024 /* nextKeyboard.png */; };
 		696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
@@ -49,6 +50,7 @@
 		69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2AF1AEEE3360097B840 /* ImageCollectionViewCell.m */; };
 		69BCF2BF1AEF15670097B840 /* GifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2BE1AEF15670097B840 /* GifManager.m */; };
 		69BCF2C21AEF17530097B840 /* Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BCF2C11AEF17530097B840 /* Gif.m */; };
+		69C541C61B2227AD00A6BE54 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C541C51B2227AD00A6BE54 /* UIImage+GIF.m */; };
 		69F774F41B12682700CE1AC6 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F774F31B12682700CE1AC6 /* ShareView.m */; };
 		69F7B30E1AFE99EB000471E1 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30D1AFE99EB000471E1 /* search.png */; };
 		69F7B3101AFEFE2E000471E1 /* uppercase.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F7B30F1AFEFE2E000471E1 /* uppercase.png */; };
@@ -94,6 +96,8 @@
 /* Begin PBXFileReference section */
 		1F8BE7B2276907EE24FF7FD9 /* Pods-SlackGifKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackGifKeyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlackGifKeyboard/Pods-SlackGifKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		6925AF941AEF343300E57F15 /* SlackGifKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SlackGifKeyboard.entitlements; sourceTree = "<group>"; };
+		696D42671B2DDBC30081252A /* FrameSelectorLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameSelectorLayout.h; sourceTree = "<group>"; };
+		696D42681B2DDBC30081252A /* FrameSelectorLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameSelectorLayout.m; sourceTree = "<group>"; };
 		696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		696EFDBA1AFE8E2600396024 /* nextKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextKeyboard.png; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		69BCF2BE1AEF15670097B840 /* GifManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManager.m; sourceTree = "<group>"; };
 		69BCF2C01AEF17530097B840 /* Gif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gif.h; sourceTree = "<group>"; };
 		69BCF2C11AEF17530097B840 /* Gif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gif.m; sourceTree = "<group>"; };
+		69C541C41B2227AD00A6BE54 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		69C541C51B2227AD00A6BE54 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
 		69F774F21B12682700CE1AC6 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		69F774F31B12682700CE1AC6 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		69F7B30D1AFE99EB000471E1 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 		69755E9C1B197AAC00B706C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				696D42671B2DDBC30081252A /* FrameSelectorLayout.h */,
+				696D42681B2DDBC30081252A /* FrameSelectorLayout.m */,
 				69755E981B19775B00B706C3 /* GiphyHeader.h */,
 				69755E991B19775B00B706C3 /* GiphyHeader.m */,
 				69BCF2AE1AEEE3360097B840 /* ImageCollectionViewCell.h */,
@@ -348,6 +356,8 @@
 				69BCF2C01AEF17530097B840 /* Gif.h */,
 				69BCF2C11AEF17530097B840 /* Gif.m */,
 				69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */,
+				69C541C41B2227AD00A6BE54 /* UIImage+GIF.h */,
+				69C541C51B2227AD00A6BE54 /* UIImage+GIF.m */,
 				69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */,
 				698279251B030B0D0043E8C7 /* SettingManager.h */,
 				698279261B030B0D0043E8C7 /* SettingManager.m */,
@@ -616,6 +626,7 @@
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
 				69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,
 				696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
+				696D42691B2DDBC30081252A /* FrameSelectorLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69C541C61B2227AD00A6BE54 /* UIImage+GIF.m in Sources */,
 				696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */,
 				69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */,
 				69755EAF1B1E398100B706C3 /* AnimatedImageManager.m in Sources */,

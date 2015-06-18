@@ -113,9 +113,10 @@ __attribute__((overloadable)) NSData * UIImageAnimatedGIFRepresentation(UIImage 
                                             }
                                     };
         CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)imageProperties);
-
         for (size_t idx = 0; idx < image.images.count; idx++) {
-            CGImageDestinationAddImage(destination, [[image.images objectAtIndex:idx] CGImage], (__bridge CFDictionaryRef)frameProperties);
+//            @autoreleasepool {
+                CGImageDestinationAddImage(destination, [[image.images objectAtIndex:idx] CGImage], (__bridge CFDictionaryRef)frameProperties);
+//            }
         }
         
         BOOL success = CGImageDestinationFinalize(destination);

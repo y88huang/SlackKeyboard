@@ -62,6 +62,17 @@
     }
     NSURL *actualURL = [folderURL URLByAppendingPathComponent:fileName];
     NSString *exportPath = makeGif(images, actualURL);
+
+    return exportPath;
+}
+
+- (NSString *)generateTemperoryPreview:(NSArray *)images
+{
+    [self cleanTempFolder];
+    NSDate *date = [NSDate date];
+    NSString *fileName = [NSString stringWithFormat:@"Gif-%@.gif",[self.formatter stringFromDate:date]];
+    NSString *tmpURL = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+    NSString *exportPath = makeGif(images, [NSURL fileURLWithPath:tmpURL]);
     return exportPath;
 }
 
@@ -91,15 +102,28 @@
     return onlyGifs;
 }
 
+- (void)cleanTempFolder
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *contents = [manager contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
+    NSArray *onlyGifs = [contents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"pathExtension='gif'"]];
+    for (NSString *path in onlyGifs)
+    {
+        [manager removeItemAtPath:path error:nil];
+    }
+}
+
 static NSString *makeGif(NSArray *images, NSURL *exportURL){
     NSUInteger const kFrameCount = images.count;
     NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary: @{
                                              (__bridge id)kCGImagePropertyGIFLoopCount: @0
                                              }
                                      };
+
     NSDictionary *frameProperties = @{
                                       (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.02f
+                                              (__bridge id)kCGImagePropertyGIFDelayTime: @0.16,
+                                              (__bridge id)kCGImageDestinationLossyCompressionQuality: @0.05
                                               }
                                       };
     

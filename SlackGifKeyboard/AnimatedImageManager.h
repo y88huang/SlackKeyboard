@@ -15,4 +15,6 @@
 - (NSArray *)getLocalImages;
 - (NSArray *)getGifs;
 
+- (NSString *)generateTemperoryPreview:(NSArray *)images;
+
 @end
