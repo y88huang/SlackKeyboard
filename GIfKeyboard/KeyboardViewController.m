@@ -287,11 +287,9 @@ const static CGFloat kButtonWidth = 40.0f;
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if ([gif.smallGifURL isFileURL])
     {
-//        cell.imageView.image = [UIImage sd_animatedGIFWithData:[NSData dataWithContentsOfURL:gif.smallGifURL]];
-//        cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:gif.smallGifURL.path];
         NSData *data = [NSData dataWithContentsOfURL:gif.smallGifURL];
         UIImage *image = [UIImage sd_animatedGIFWithData:data];
-        UIImage *image2 = [image sd_animatedImageByScalingAndCroppingToSize:CGSizeMake(200.0f, 100.0f)];
+        UIImage *image2 = [image sd_animatedImageByScalingAndCroppingToSize:CGSizeMake(200.0f, CGRectGetHeight(collectionView.bounds) / 2.0f)];
         cell.imageView.image = image2;
     }else{
         [cell.imageView setImageWithURL:gif.smallGifURL];
@@ -313,10 +311,13 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Gif *gif = self.animatedGIFs[indexPath.section * 2 + indexPath.row];
-    [self.textDocumentProxy insertText:[gif.gifURL absoluteString]];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[TrendingImageManager sharedInstance] addCountForGifURL:[gif.gifURL absoluteString]];
-    });
+    if (![gif.gifURL isFileURL])
+    {
+        [self.textDocumentProxy insertText:[gif.gifURL absoluteString]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[TrendingImageManager sharedInstance] addCountForGifURL:[gif.gifURL absoluteString]];
+        });
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
 {
     self.previewGifImageView = [[UIImageView alloc] init];
     self.previewGifImageView.frame = self.previewLayer.frame;
-    self.previewGifImageView.backgroundColor = [UIColor redColor];
+    self.previewGifImageView.backgroundColor = [UIColor clearColor];
     self.previewGifImageView.hidden = YES;
     [self.previewScreenView addSubview:self.previewGifImageView];
 }
