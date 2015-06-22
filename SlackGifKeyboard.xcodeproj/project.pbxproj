@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		696D42691B2DDBC30081252A /* FrameSelectorLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 696D42681B2DDBC30081252A /* FrameSelectorLayout.m */; };
+		696D42741B34B8C70081252A /* DIY_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 696D42731B34B8C70081252A /* DIY_Logo.png */; };
 		696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */; };
 		696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 696EFDBA1AFE8E2600396024 /* nextKeyboard.png */; };
 		696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
@@ -98,6 +99,7 @@
 		6925AF941AEF343300E57F15 /* SlackGifKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SlackGifKeyboard.entitlements; sourceTree = "<group>"; };
 		696D42671B2DDBC30081252A /* FrameSelectorLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameSelectorLayout.h; sourceTree = "<group>"; };
 		696D42681B2DDBC30081252A /* FrameSelectorLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameSelectorLayout.m; sourceTree = "<group>"; };
+		696D42731B34B8C70081252A /* DIY_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DIY_Logo.png; sourceTree = "<group>"; };
 		696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		696EFDBA1AFE8E2600396024 /* nextKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextKeyboard.png; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				69755E941B19753800B706C3 /* gifLogos */,
 				698279311B0581690043E8C7 /* Trend.png */,
+				696D42731B34B8C70081252A /* DIY_Logo.png */,
 				69F7B3151AFF0320000471E1 /* Cancel.png */,
 				69F7B3131AFF021E000471E1 /* Back.png */,
 				69F7B3111AFF014B000471E1 /* backSpace.png */,
@@ -528,6 +531,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				696D42741B34B8C70081252A /* DIY_Logo.png in Resources */,
 				69F7B3141AFF021E000471E1 /* Back.png in Resources */,
 				69755E7B1B193C2A00B706C3 /* giphy_Logo.gif in Resources */,
 				69F7B30E1AFE99EB000471E1 /* search.png in Resources */,

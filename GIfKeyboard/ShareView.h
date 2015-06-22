@@ -10,4 +10,10 @@
 
 @interface ShareView : UIView
 
+@property (nonatomic, copy) NSString *text;
+
+- (void)showWithText:(NSString *)text;
+- (void)showWithText:(NSString *)text seconds:(NSInteger)seconds;
+- (void)hide;
+
 @end

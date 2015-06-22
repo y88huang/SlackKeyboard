@@ -30,7 +30,7 @@ const static CGFloat kButtonWidth = 40.0f;
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 @property (nonatomic, strong) UIButton *searchGifButton;
 @property (nonatomic, strong) UIButton *trendingGifButton;
-//@property (nonatomic, strong) UIButton *customGifButton;
+@property (nonatomic, strong) UIButton *customGifButton;
 @property (nonatomic, strong) UIImageView *giphyBanner;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *animatedGIFs;
@@ -62,8 +62,8 @@ const static CGFloat kButtonWidth = 40.0f;
         return;
     }
     [self.inputView removeConstraint:self.heightConstraint];
-    
-       self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant: _expandedHeight];
+
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant: _expandedHeight];
     self.heightConstraint.priority = 990;
     [self.inputView addConstraint: self.heightConstraint];
 }
@@ -110,9 +110,9 @@ const static CGFloat kButtonWidth = 40.0f;
         
     }];
 }
+
 #pragma mark -
 #pragma mark - setup code
-
 - (void)setupKeywordLabel
 {
     self.keywordLabel = [[UILabel alloc] init];
@@ -124,7 +124,7 @@ const static CGFloat kButtonWidth = 40.0f;
         make.right.equalTo(self.bottomPanel.mas_right);
         make.top.equalTo(self.bottomPanel.mas_top);
         make.bottom.equalTo(self.bottomPanel.mas_bottom);
-        make.width.equalTo(self.bottomPanel.mas_width).dividedBy(2.0f);
+        make.left.equalTo(self.customGifButton.mas_right).with.offset(10.0);
     }];
 }
 
@@ -155,6 +155,7 @@ const static CGFloat kButtonWidth = 40.0f;
     [self setupNextKey];
     [self setupSearchKey];
     [self setupTrendingKey];
+    [self setupCustomGifButton];
     [self setupKeywordLabel];
 }
 
@@ -228,6 +229,24 @@ const static CGFloat kButtonWidth = 40.0f;
     }];
 }
 
+- (void)setupCustomGifButton
+{
+    self.customGifButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.customGifButton.backgroundColor = [UIColor peterRiver];
+    [self.customGifButton setTintColor:[UIColor whiteColor]];
+    [self.customGifButton addTarget:self action:@selector(showCustomGifs:) forControlEvents:UIControlEventTouchUpInside];
+    self.customGifButton.layer.cornerRadius = 4.0f;
+    [self.customGifButton setImage:[UIImage imageNamed:@"DIY_Logo"] forState:UIControlStateNormal];
+    [self.customGifButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 5.0, 2.0, 5.0)];
+    [self.bottomPanel addSubview:self.customGifButton];
+    
+    [self.customGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.trendingGifButton.mas_right).with.offset(10.0f);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+}
 - (void)setupCollectionView
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -252,7 +271,6 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 - (void)textWillChange:(id<UITextInput>)textInput {
@@ -364,10 +382,20 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)showTrendingGifs:(UIButton *)sender
 {
-//    [self fetchTrendingGifs];
+
+}
+
+- (void)showCustomGifs:(UIButton *)sender
+{
     NSArray *images = [[AnimatedImageManager sharedInstance] getGifs];
     [self.animatedGIFs removeAllObjects];
     [self.animatedGIFs addObjectsFromArray:images];
+    if (images.count == 0)
+    {
+        self.shareView.text = @"You don't have any custom gif yet, bro";
+        self.shareView.frame = self.collectionView.bounds;
+        self.shareView.hidden = NO;
+    }
     [self.collectionView reloadData];
 }
 
@@ -411,7 +439,6 @@ const static CGFloat kButtonWidth = 40.0f;
 
 #pragma mark -
 #pragma mark - keyboardView Delegate
-
 - (void)keyboard:(SearchKeyboardView *)keyboard didFinishSearchingWithKeyword:(NSString *)keyword
 {
     [self hideKeyboard];

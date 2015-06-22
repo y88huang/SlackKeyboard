@@ -36,11 +36,31 @@
     return self;
 }
 
+- (void)setText:(NSString *)text
+{
+    _text = text;
+    self.label.text = _text;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     self.effectView.frame = self.bounds;
     self.label.frame = self.effectView.bounds;
+}
+
+- (void)showWithText:(NSString *)text
+{
+    self.text = text;
+    self.hidden = NO;
+}
+
+- (void)showWithText:(NSString *)text seconds:(NSInteger)seconds
+{
+    self.text = text;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.hidden = YES;
+    });
 }
 
 @end

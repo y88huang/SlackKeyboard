@@ -22,7 +22,8 @@
 
     UIImage *animatedImage;
 
-    if (count <= 1) {
+    if (count <= 1)
+    {
         animatedImage = [[UIImage alloc] initWithData:data];
     }
     else {

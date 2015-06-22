@@ -9,6 +9,7 @@
 #import "SettingManager.h"
 #import "KeyboardStyle.h"
 #import "Constant.h"
+#import "UIColor+Flat.h"
 
 @interface SettingManager()
 
@@ -50,7 +51,7 @@
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL: [self.url URLByAppendingPathComponent:kSettingFileName]];
     NSData *data = dict[@"ThemeSetting"];
     KeyboardStyle *style = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    self.style = style;
+    self.style = style ? style : [[KeyboardStyle alloc] initWithName:@"Pink" previewImageName:nil themeColor:[UIColor pomegranate] tintColor:[UIColor alizarin]];
 }
 
 - (KeyboardStyle *)keyboardSetting

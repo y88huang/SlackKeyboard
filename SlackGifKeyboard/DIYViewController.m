@@ -41,8 +41,6 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
 
 @property (nonatomic, strong) NSDateFormatter *formatter;
 
-@property (nonatomic, assign) BOOL isRecording;
-
 @property (nonatomic, strong) UIView *frameView;
 
 @property (nonatomic, strong) UICollectionView *selectCollectionView;
@@ -68,7 +66,6 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
     _currentState = RecordingStateOriginal;
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"yyyy-MM-dd_HH_mm_ss"];
-    self.isRecording = NO;
 
     [self setupFrameImageView];
     [self setupCaptureSession];
@@ -123,7 +120,6 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
 
 - (void)setupCaptureSession
 {
-//    self.frameView.hidden = NO;
     self.session = [[AVCaptureSession alloc] init];
     
      //Add video input.
@@ -297,7 +293,7 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
         }
     }
     
-    self.isRecording = YES;
+    _currentState = RecordingStateRecording;
     
     [self.output startRecordingToOutputFileURL:outputURL recordingDelegate:self];
 }
