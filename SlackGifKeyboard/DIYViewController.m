@@ -50,6 +50,7 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
 
 @property (nonatomic, strong) UIButton *recordButton;
 @property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UIButton *closeButton;
 
 @end
 
@@ -69,11 +70,23 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
 
     [self setupFrameImageView];
     [self setupCaptureSession];
+    [self setupCloseButton];
     [self setupCancelButton];
     [self setupPreviewImageView];
     [self setupCollectionView];
 }
 
+- (void)setupCloseButton
+{
+    self.closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    self.closeButton.center = CGPointMake(70.0f, self.recordButton.center.y);
+    self.closeButton.backgroundColor = [UIColor turquoise];
+    self.closeButton.layer.cornerRadius = 25.0f;
+    self.closeButton.layer.borderWidth = 4.0f;
+    self.closeButton.layer.borderColor = [UIColor nephritis].CGColor;
+    [self.bottomView addSubview:self.closeButton];
+    [self.closeButton addTarget:self action:@selector(didPressCloseButton:) forControlEvents:UIControlEventTouchUpInside];
+}
 - (void)setupFrameImageView
 {
     self.frameView = [[UIView alloc] init];
@@ -383,6 +396,11 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
     self.previewLayer.hidden = NO;
     self.previewGifImageView.image = nil;
     self.previewGifImageView.hidden = YES;
+}
+
+- (void)didPressCloseButton:(UIButton *)button
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

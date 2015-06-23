@@ -363,6 +363,10 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)hideKeyboard
 {
+    if (self.kbView.hidden)
+    {
+        return;
+    }
     _expandedHeight = 216.0f;
     self.kbView.hidden = YES;
     [self.view setNeedsUpdateConstraints];
@@ -382,12 +386,16 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)showTrendingGifs:(UIButton *)sender
 {
-
+    self.keywordLabel.text = @"#Trending 20";
+    self.shareView.hidden = YES;
+    [self hideKeyboard];
+    [self fetchTrendingGifs];
 }
 
 - (void)showCustomGifs:(UIButton *)sender
 {
     NSArray *images = [[AnimatedImageManager sharedInstance] getGifs];
+    self.keywordLabel.text = @"DIY Gifs";
     [self.animatedGIFs removeAllObjects];
     [self.animatedGIFs addObjectsFromArray:images];
     if (images.count == 0)
