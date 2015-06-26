@@ -146,7 +146,7 @@ const static CGFloat kButtonWidth = 40.0f;
     self.keywordLabel = [[UILabel alloc] init];
     self.keywordLabel.textColor = [UIColor whiteColor];
     self.keywordLabel.font = [UIFont fontWithName:@"Avenir-Black" size:20.0f];
-    self.keywordLabel.text = @"#Trending 20";
+    self.keywordLabel.text = @"#Trending 25";
     [self.bottomPanel addSubview:self.keywordLabel];
 }
 
