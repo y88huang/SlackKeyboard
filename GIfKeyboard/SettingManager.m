@@ -50,7 +50,7 @@
     self.url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:kGroupIdentifier];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL: [self.url URLByAppendingPathComponent:kSettingFileName]];
     NSData *data = dict[@"ThemeSetting"];
-    KeyboardStyle *style = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    KeyboardStyle *style = data ? [NSKeyedUnarchiver unarchiveObjectWithData:data] : nil;
     self.style = style ? style : [[KeyboardStyle alloc] initWithName:@"Pink" previewImageName:nil themeColor:[UIColor pomegranate] tintColor:[UIColor alizarin]];
 }
 

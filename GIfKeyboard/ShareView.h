@@ -14,6 +14,5 @@
 
 - (void)showWithText:(NSString *)text;
 - (void)showWithText:(NSString *)text seconds:(NSInteger)seconds;
-- (void)hide;
 
 @end

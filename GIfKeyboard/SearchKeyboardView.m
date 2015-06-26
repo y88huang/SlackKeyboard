@@ -31,6 +31,8 @@ const static CGFloat kButtonPadding = 5.0f;
     FUIButton *_nextButton;
     KeyboardStyle *_style;
     NSArray *_alphabeticalKeys;
+    NSArray *_buttons;
+    
     BOOL _isUpperCase;
 }
 
@@ -73,12 +75,6 @@ const static CGFloat kButtonPadding = 5.0f;
         _textField.layer.borderWidth = 3.0f;
         _textField.layer.cornerRadius = 4.0f;
         _textField.textAlignment = NSTextAlignmentCenter;
-        [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.mas_left);
-            make.right.equalTo(self.mas_right);
-            make.top.equalTo(self.mas_top);
-            make.height.equalTo(self.mas_height).dividedBy(_containers.count + 1);
-        }];
         
         for (UIView *view in _containers) {
             [self addSubview:view];
@@ -86,6 +82,67 @@ const static CGFloat kButtonPadding = 5.0f;
         [self setupKeyboardView];
     }
     return self;
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+    [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left);
+        make.right.equalTo(self.mas_right);
+        make.top.equalTo(self.mas_top);
+        make.height.equalTo(self.mas_height).dividedBy(_containers.count + 1);
+    }];
+    
+    [_containers enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(self.mas_height).dividedBy(_containers.count + 1);
+            make.left.equalTo(self.mas_left);
+            make.right.equalTo(self.mas_right);
+            if (idx == 0)
+            {
+                make.top.equalTo(_textField.mas_bottom);
+            }
+            else
+            {
+                UIView *last = _containers[idx - 1];
+                make.top.equalTo(last.mas_bottom);
+            }
+        }];
+        
+        NSArray *row = _buttons[idx];
+        for (UIButton *button in row)
+        {
+            [view addSubview:button];
+        }
+        if (_fourthRow == view)
+        {
+            [_nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_fourthRow.mas_left).with.offset(15.0f);
+                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
+                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
+                make.width.equalTo(_fourthRow.mas_width).dividedBy(6.0f);
+            }];
+            
+            [_returnButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(_fourthRow.mas_right).with.offset(-15.0f);
+                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
+                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
+                make.width.equalTo(_fourthRow.mas_width).dividedBy(6.0f);
+            }];
+            
+            [_spaceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_nextButton.mas_right).with.offset(kButtonPadding);
+                make.right.equalTo(_returnButton.mas_left).with.offset(-kButtonPadding);
+                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
+                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
+            }];
+        }
+        else
+        {
+            [self addKeyConstrainsToButtons:row onView:view];
+        }
+    }];
 }
 
 - (NSArray *)createButtons:(NSArray *)titles
@@ -178,57 +235,7 @@ const static CGFloat kButtonPadding = 5.0f;
     
     _returnButton.backgroundColor = [UIColor clearColor];
     
-    NSArray *buttons = @[firstRow, secondRow, thirdRow, fourthRow];
-    
-    [_containers enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(self.mas_height).dividedBy(_containers.count + 1);
-            make.left.equalTo(self.mas_left);
-            make.right.equalTo(self.mas_right);
-            if (idx == 0)
-            {
-                make.top.equalTo(_textField.mas_bottom);
-            }
-            else
-            {
-                UIView *last = _containers[idx - 1];
-                make.top.equalTo(last.mas_bottom);
-            }
-        }];
-        
-        NSArray *row = buttons[idx];
-        for (UIButton *button in row)
-        {
-            [view addSubview:button];
-        }
-        if (_fourthRow == view)
-        {
-            [_nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_fourthRow.mas_left).with.offset(15.0f);
-                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
-                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
-                make.width.equalTo(_fourthRow.mas_width).dividedBy(6.0f);
-            }];
-            
-            [_returnButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(_fourthRow.mas_right).with.offset(-15.0f);
-                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
-                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
-                make.width.equalTo(_fourthRow.mas_width).dividedBy(6.0f);
-            }];
-            
-            [_spaceButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_nextButton.mas_right).with.offset(kButtonPadding);
-                make.right.equalTo(_returnButton.mas_left).with.offset(-kButtonPadding);
-                make.top.equalTo(_fourthRow.mas_top).with.offset(kButtonPadding);
-                make.bottom.equalTo(_fourthRow.mas_bottom).with.offset(-kButtonPadding);
-            }];
-        }
-        else
-        {
-            [self addKeyConstrainsToButtons:row onView:view];
-        }
-    }];
+    _buttons = @[firstRow, secondRow, thirdRow, fourthRow];
 }
 
 - (void)keyPressed:(UIButton *)sender

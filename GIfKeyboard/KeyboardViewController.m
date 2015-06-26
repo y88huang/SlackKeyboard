@@ -66,6 +66,36 @@ const static CGFloat kButtonWidth = 40.0f;
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant: _expandedHeight];
     self.heightConstraint.priority = 990;
     [self.inputView addConstraint: self.heightConstraint];
+    
+    [self.giphyBanner mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.width.equalTo(@(30.0f));
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+    }];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.giphyBanner.mas_right);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+    }];
+    
+    [self.kbView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+    }];
+    
+    [self.bottomPanel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.top.equalTo(self.collectionView.mas_bottom);
+    }];
+    
+    [self setupBottomPanelConstrains];
 }
 
 - (void)viewDidLoad {
@@ -81,9 +111,7 @@ const static CGFloat kButtonWidth = 40.0f;
     _expandedHeight = 216.0;
     self.view.backgroundColor = [UIColor blackColor];
     self.shareView = [[ShareView alloc] init];
-//    self.shareView.hidden = YES;
     [self.collectionView addSubview:self.shareView];
-//    self.placeHolderImage = [UIImage imageNamed:@"giphy_Logo2.gif"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -120,12 +148,6 @@ const static CGFloat kButtonWidth = 40.0f;
     self.keywordLabel.font = [UIFont fontWithName:@"Avenir-Black" size:20.0f];
     self.keywordLabel.text = @"#Trending 20";
     [self.bottomPanel addSubview:self.keywordLabel];
-    [self.keywordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.bottomPanel.mas_right);
-        make.top.equalTo(self.bottomPanel.mas_top);
-        make.bottom.equalTo(self.bottomPanel.mas_bottom);
-        make.left.equalTo(self.customGifButton.mas_right).with.offset(10.0);
-    }];
 }
 
 - (void)setupGiphyBanner
@@ -133,12 +155,6 @@ const static CGFloat kButtonWidth = 40.0f;
     self.giphyBanner = [[UIImageView alloc] init];
     self.giphyBanner.image = [UIImage imageNamed:@"giphy_verticle.gif"];
     [self.view addSubview:self.giphyBanner];
-    [self.giphyBanner mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.top.equalTo(self.view.mas_top);
-        make.width.equalTo(@(30.0f));
-        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
-    }];
 }
 
 - (void)setupBottomPanel
@@ -146,12 +162,7 @@ const static CGFloat kButtonWidth = 40.0f;
     self.bottomPanel = [[UIView alloc] init];
     self.bottomPanel.backgroundColor = self.style.themeColor;
     [self.view addSubview:self.bottomPanel];
-    [self.bottomPanel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(self.view.mas_bottom);
-        make.top.equalTo(self.collectionView.mas_bottom);
-    }];
+    
     [self setupNextKey];
     [self setupSearchKey];
     [self setupTrendingKey];
@@ -165,12 +176,6 @@ const static CGFloat kButtonWidth = 40.0f;
     self.kbView.hidden = YES;
     self.kbView.delegate = self;
     [self.view addSubview:self.kbView];
-    [self.kbView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.top.equalTo(self.view.mas_top);
-        make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
-    }];
 }
 
 - (void)setupSearchKey
@@ -183,12 +188,6 @@ const static CGFloat kButtonWidth = 40.0f;
     self.searchGifButton.imageEdgeInsets = UIEdgeInsetsMake(0.0f, 7.0f , 0.0, 7.0f);
     [self.searchGifButton addTarget:self action:@selector(searchForGif:) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomPanel addSubview: self.searchGifButton];
-    [self.searchGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.nextKeyboardButton.mas_right).with.offset(10.0f);
-        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
-        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
-        make.width.equalTo(@(kButtonWidth));
-    }];
 }
 
 - (void)setupNextKey
@@ -202,13 +201,6 @@ const static CGFloat kButtonWidth = 40.0f;
     [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventTouchUpInside];
     
     [self.bottomPanel addSubview:self.nextKeyboardButton];
-    
-    [self.nextKeyboardButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
-        make.left.equalTo(self.bottomPanel.mas_left).with.offset(kButtonPadding);
-        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
-        make.width.equalTo(@(kButtonWidth));
-    }];
 }
 
 - (void)setupTrendingKey
@@ -220,13 +212,6 @@ const static CGFloat kButtonWidth = 40.0f;
     [self.trendingGifButton addTarget:self action:@selector(showTrendingGifs:) forControlEvents:UIControlEventTouchUpInside];
     self.trendingGifButton.layer.cornerRadius = 4.0f;
     [self.bottomPanel addSubview:self.trendingGifButton];
-    
-    [self.trendingGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
-        make.left.equalTo(self.searchGifButton.mas_right).with.offset(10.0f);
-        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
-        make.width.equalTo(@(kButtonWidth));
-    }];
 }
 
 - (void)setupCustomGifButton
@@ -239,14 +224,8 @@ const static CGFloat kButtonWidth = 40.0f;
     [self.customGifButton setImage:[UIImage imageNamed:@"DIY_Logo"] forState:UIControlStateNormal];
     [self.customGifButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 5.0, 2.0, 5.0)];
     [self.bottomPanel addSubview:self.customGifButton];
-    
-    [self.customGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
-        make.left.equalTo(self.trendingGifButton.mas_right).with.offset(10.0f);
-        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
-        make.width.equalTo(@(kButtonWidth));
-    }];
 }
+
 - (void)setupCollectionView
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -261,11 +240,43 @@ const static CGFloat kButtonWidth = 40.0f;
     self.collectionView.backgroundColor = self.style.tintColor;
     [self.collectionView registerClass:[ImageCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.collectionView];
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.giphyBanner.mas_right);
-        make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(self.view.mas_bottom).with.offset(-kButtonPanelHeight);
+}
+
+- (void)setupBottomPanelConstrains
+{
+    [self.nextKeyboardButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.bottomPanel.mas_left).with.offset(kButtonPadding);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+    
+    [self.searchGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nextKeyboardButton.mas_right).with.offset(10.0f);
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+    
+    [self.trendingGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.searchGifButton.mas_right).with.offset(10.0f);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+    
+    [self.customGifButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomPanel.mas_top).with.offset(kButtonPadding);
+        make.left.equalTo(self.trendingGifButton.mas_right).with.offset(10.0f);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom).with.offset(-kButtonPadding);
+        make.width.equalTo(@(kButtonWidth));
+    }];
+    
+    [self.keywordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.bottomPanel.mas_right);
+        make.top.equalTo(self.bottomPanel.mas_top);
+        make.bottom.equalTo(self.bottomPanel.mas_bottom);
+        make.left.equalTo(self.customGifButton.mas_right).with.offset(10.0);
     }];
 }
 
