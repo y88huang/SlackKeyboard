@@ -486,7 +486,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 69BCF26E1AEEBE1F0097B840 /* Build configuration list for PBXProject "SlackGifKeyboard" */;
+			buildConfigurationList = 69BCF26E1AEEBE1F0097B840 /* Build configuration list for PBXProject "Gicity" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -776,6 +776,7 @@
 			baseConfigurationReference = 1F8BE7B2276907EE24FF7FD9 /* Pods-SlackGifKeyboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SlackGifKeyboard/SlackGifKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -793,6 +794,7 @@
 			baseConfigurationReference = 81F094DF58E405225126EB71 /* Pods-SlackGifKeyboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SlackGifKeyboard/SlackGifKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -880,7 +882,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		69BCF26E1AEEBE1F0097B840 /* Build configuration list for PBXProject "SlackGifKeyboard" */ = {
+		69BCF26E1AEEBE1F0097B840 /* Build configuration list for PBXProject "Gicity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				69BCF2941AEEBE1F0097B840 /* Debug */,
