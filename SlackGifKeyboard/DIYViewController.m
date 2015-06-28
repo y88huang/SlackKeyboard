@@ -365,7 +365,7 @@ typedef NS_ENUM(NSUInteger, RecordingState) {
         }
         self.images = images;
         [self.selectCollectionView reloadData];
-        NSString *url = [[AnimatedImageManager sharedInstance] exportImages:images];
+        NSString *url = [[AnimatedImageManager sharedInstance] generateTemperoryPreview:images];
         self.previewGifImageView.image = [UIImage sd_animatedGIFWithData:[NSData dataWithContentsOfFile:url]];
     }
 }

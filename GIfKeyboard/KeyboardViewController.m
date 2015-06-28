@@ -318,7 +318,7 @@ const static CGFloat kButtonWidth = 40.0f;
     {
         NSData *data = [NSData dataWithContentsOfURL:gif.smallGifURL];
         UIImage *image = [UIImage sd_animatedGIFWithData:data];
-        UIImage *image2 = [image sd_animatedImageByScalingAndCroppingToSize:CGSizeMake(200.0f, CGRectGetHeight(collectionView.bounds) / 2.0f)];
+        UIImage *image2 = [image sd_animatedImageByScalingAndCroppingToSize:CGSizeMake(150.0f, CGRectGetHeight(collectionView.bounds) / 2.0f)];
         cell.imageView.image = image2;
     }else{
         [cell.imageView setImageWithURL:gif.smallGifURL];

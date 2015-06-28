@@ -41,16 +41,12 @@ typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
 {
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
-//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view.mas_left);
-//        make.right.equalTo(self.view.mas_right);
-//        make.top.equalTo(self.view.mas_top);
-//        make.bottom.equalTo(self.view.mas_bottom);
-//    }];
+
     self.tableView.frame = self.view.bounds;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
+    self.tableView.scrollEnabled = NO;
     self.tableView.backgroundColor = [UIColor peterRiver];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
@@ -60,21 +56,6 @@ typedef NS_ENUM(NSInteger, SlackKeyboardConfig)
 {
     return self.titles.count;
 }
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//    UITableViewHeaderFooterView *view = (UITableViewHeaderFooterView *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"footer"];
-//    if (!view.backgroundView) {
-//        view.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"giphy_horizontal.gif"]];
-//        view.backgroundView.backgroundColor = [UIColor redColor];
-//    }
-//    return view;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 60.0f;
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
