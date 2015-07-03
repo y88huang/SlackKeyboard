@@ -62,8 +62,7 @@
     [managedObjectContext.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                                   configuration:nil
                                                                             URL:self.storeURL
-                                                                        options:nil
-                                                                          error:&error];
+                                                                        options:@{NSMigratePersistentStoresAutomaticallyOption: @YES, NSInferMappingModelAutomaticallyOption: @YES}                                                                          error:&error];
     if (error) {
         NSLog(@"error: %@", error.localizedDescription);
         NSLog(@"rm \"%@\"", self.storeURL.path);
