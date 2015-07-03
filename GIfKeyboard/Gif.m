@@ -9,5 +9,8 @@
 #import "Gif.h"
 
 @implementation Gif
+@dynamic date;
+@dynamic smallGifURL;
+@dynamic gifURL;
 
 @end

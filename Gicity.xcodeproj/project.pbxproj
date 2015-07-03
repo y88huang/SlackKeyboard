@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		696D42691B2DDBC30081252A /* FrameSelectorLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 696D42681B2DDBC30081252A /* FrameSelectorLayout.m */; };
 		696D42741B34B8C70081252A /* DIY_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 696D42731B34B8C70081252A /* DIY_Logo.png */; };
+		696EB0481B45D51F00D1E2FC /* GicityCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 696EB0461B45D51F00D1E2FC /* GicityCache.xcdatamodeld */; };
+		696EB0491B45D52700D1E2FC /* GicityCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 696EB0461B45D51F00D1E2FC /* GicityCache.xcdatamodeld */; };
+		696EB04E1B45D93500D1E2FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696EB04D1B45D93500D1E2FC /* CoreData.framework */; };
+		696EB0501B45DA9200D1E2FC /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB04B1B45D78300D1E2FC /* ModelObject.m */; };
+		696EB0511B45DA9D00D1E2FC /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB04B1B45D78300D1E2FC /* ModelObject.m */; };
+		696EB0541B45DB8100D1E2FC /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB0531B45DB8100D1E2FC /* CoreDataStack.m */; };
+		696EB0571B45DEFD00D1E2FC /* PersistentStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB0561B45DEFD00D1E2FC /* PersistentStoreManager.m */; };
+		696EB05A1B46091000D1E2FC /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB0591B46091000D1E2FC /* Feed.m */; };
+		696EB05D1B460A2900D1E2FC /* NSDate+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EB05C1B460A2900D1E2FC /* NSDate+util.m */; };
 		696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */; };
 		696EFDBB1AFE8E2600396024 /* nextKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 696EFDBA1AFE8E2600396024 /* nextKeyboard.png */; };
 		696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 696EFDBD1AFE8F8500396024 /* UIColor+Flat.m */; };
@@ -100,6 +109,18 @@
 		696D42671B2DDBC30081252A /* FrameSelectorLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameSelectorLayout.h; sourceTree = "<group>"; };
 		696D42681B2DDBC30081252A /* FrameSelectorLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameSelectorLayout.m; sourceTree = "<group>"; };
 		696D42731B34B8C70081252A /* DIY_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DIY_Logo.png; sourceTree = "<group>"; };
+		696EB0471B45D51F00D1E2FC /* GicityCache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GicityCache.xcdatamodel; sourceTree = "<group>"; };
+		696EB04A1B45D78300D1E2FC /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
+		696EB04B1B45D78300D1E2FC /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
+		696EB04D1B45D93500D1E2FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		696EB0521B45DB8100D1E2FC /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		696EB0531B45DB8100D1E2FC /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		696EB0551B45DEFD00D1E2FC /* PersistentStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStoreManager.h; sourceTree = "<group>"; };
+		696EB0561B45DEFD00D1E2FC /* PersistentStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStoreManager.m; sourceTree = "<group>"; };
+		696EB0581B46091000D1E2FC /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		696EB0591B46091000D1E2FC /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		696EB05B1B460A2900D1E2FC /* NSDate+util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+util.h"; sourceTree = "<group>"; };
+		696EB05C1B460A2900D1E2FC /* NSDate+util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+util.m"; sourceTree = "<group>"; };
 		696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGIFImageSerialization.h; sourceTree = "<group>"; };
 		696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGIFImageSerialization.m; sourceTree = "<group>"; };
 		696EFDBA1AFE8E2600396024 /* nextKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextKeyboard.png; sourceTree = "<group>"; };
@@ -198,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				696EB04E1B45D93500D1E2FC /* CoreData.framework in Frameworks */,
 				ABB6944CBCA6AE24A9CEF37F /* libPods-GIfKeyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +329,7 @@
 				698279221B028A4E0043E8C7 /* KeyboardSettingManager.m */,
 				69755EAC1B1E109400B706C3 /* AnimatedImageManager.h */,
 				69755EAD1B1E109400B706C3 /* AnimatedImageManager.m */,
+				696EB0461B45D51F00D1E2FC /* GicityCache.xcdatamodeld */,
 				69BCF2831AEEBE1F0097B840 /* Images.xcassets */,
 				698279281B038F240043E8C7 /* Constant.h */,
 				69BCF2851AEEBE1F0097B840 /* LaunchScreen.xib */,
@@ -348,20 +371,30 @@
 				698279301B04FC030043E8C7 /* Assets */,
 				696EFDB71AFE79D100396024 /* AnimatedGIFImageSerialization.h */,
 				696EFDB81AFE79D100396024 /* AnimatedGIFImageSerialization.m */,
+				696EB0521B45DB8100D1E2FC /* CoreDataStack.h */,
+				696EB0531B45DB8100D1E2FC /* CoreDataStack.m */,
+				696EB04A1B45D78300D1E2FC /* ModelObject.h */,
+				696EB04B1B45D78300D1E2FC /* ModelObject.m */,
 				69BCF2A41AEED1770097B840 /* KeyboardViewController.h */,
 				69BCF2A51AEED1770097B840 /* KeyboardViewController.m */,
 				69FD7F4C1AF1CF8E00EBE0B8 /* SearchKeyboardView.h */,
 				69FD7F4D1AF1CF8F00EBE0B8 /* SearchKeyboardView.m */,
 				69F774F21B12682700CE1AC6 /* ShareView.h */,
+				696EB05B1B460A2900D1E2FC /* NSDate+util.h */,
+				696EB05C1B460A2900D1E2FC /* NSDate+util.m */,
 				69F774F31B12682700CE1AC6 /* ShareView.m */,
 				69BCF2BD1AEF15670097B840 /* GifManager.h */,
 				69BCF2BE1AEF15670097B840 /* GifManager.m */,
+				696EB0551B45DEFD00D1E2FC /* PersistentStoreManager.h */,
+				696EB0561B45DEFD00D1E2FC /* PersistentStoreManager.m */,
+				696EB0581B46091000D1E2FC /* Feed.h */,
+				696EB0591B46091000D1E2FC /* Feed.m */,
 				69BCF2C01AEF17530097B840 /* Gif.h */,
 				69BCF2C11AEF17530097B840 /* Gif.m */,
 				69755E8B1B194B1B00B706C3 /* TrendingImageManager.h */,
+				69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */,
 				69C541C41B2227AD00A6BE54 /* UIImage+GIF.h */,
 				69C541C51B2227AD00A6BE54 /* UIImage+GIF.m */,
-				69755E8C1B194B1B00B706C3 /* TrendingImageManager.m */,
 				698279251B030B0D0043E8C7 /* SettingManager.h */,
 				698279261B030B0D0043E8C7 /* SettingManager.m */,
 				696EFDBC1AFE8F8500396024 /* UIColor+Flat.h */,
@@ -382,6 +415,7 @@
 		D2BADF7C77B62E595029B378 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				696EB04D1B45D93500D1E2FC /* CoreData.framework */,
 				69755EAA1B1D7E5700B706C3 /* MobileCoreServices.framework */,
 				69755EA81B1D7E4F00B706C3 /* ImageIO.framework */,
 				69755EA31B1B87F900B706C3 /* AVFoundation.framework */,
@@ -623,12 +657,14 @@
 				69755EAE1B1E109400B706C3 /* AnimatedImageManager.m in Sources */,
 				6982791D1B0284430043E8C7 /* KeyboardSettingViewController.m in Sources */,
 				69BCF2B01AEEE3360097B840 /* ImageCollectionViewCell.m in Sources */,
+				696EB0511B45DA9D00D1E2FC /* ModelObject.m in Sources */,
 				69755E911B19548200B706C3 /* ImageTrendingViewController.m in Sources */,
 				698279231B028A4E0043E8C7 /* KeyboardSettingManager.m in Sources */,
 				69755E9F1B197B1B00B706C3 /* DIYViewController.m in Sources */,
 				69755E9A1B19775B00B706C3 /* GiphyHeader.m in Sources */,
 				69BCF2791AEEBE1F0097B840 /* main.m in Sources */,
 				69755E8D1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,
+				696EB0481B45D51F00D1E2FC /* GicityCache.xcdatamodeld in Sources */,
 				696EFDBE1AFE8F8500396024 /* UIColor+Flat.m in Sources */,
 				696D42691B2DDBC30081252A /* FrameSelectorLayout.m in Sources */,
 			);
@@ -649,6 +685,8 @@
 				69C541C61B2227AD00A6BE54 /* UIImage+GIF.m in Sources */,
 				696EFDB91AFE79D100396024 /* AnimatedGIFImageSerialization.m in Sources */,
 				69BCF2B11AEEE44A0097B840 /* ImageCollectionViewCell.m in Sources */,
+				696EB05A1B46091000D1E2FC /* Feed.m in Sources */,
+				696EB0541B45DB8100D1E2FC /* CoreDataStack.m in Sources */,
 				69755EAF1B1E398100B706C3 /* AnimatedImageManager.m in Sources */,
 				69F774F41B12682700CE1AC6 /* ShareView.m in Sources */,
 				6982792C1B03A0450043E8C7 /* KeyboardStyle.m in Sources */,
@@ -657,8 +695,12 @@
 				698279271B030B0D0043E8C7 /* SettingManager.m in Sources */,
 				69FD7F4E1AF1CF8F00EBE0B8 /* SearchKeyboardView.m in Sources */,
 				69755E8E1B194B1B00B706C3 /* TrendingImageManager.m in Sources */,
+				696EB0491B45D52700D1E2FC /* GicityCache.xcdatamodeld in Sources */,
+				696EB0501B45DA9200D1E2FC /* ModelObject.m in Sources */,
 				69BCF2C21AEF17530097B840 /* Gif.m in Sources */,
 				69BCF2A61AEED1770097B840 /* KeyboardViewController.m in Sources */,
+				696EB0571B45DEFD00D1E2FC /* PersistentStoreManager.m in Sources */,
+				696EB05D1B460A2900D1E2FC /* NSDate+util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +961,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		696EB0461B45D51F00D1E2FC /* GicityCache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				696EB0471B45D51F00D1E2FC /* GicityCache.xcdatamodel */,
+			);
+			currentVersion = 696EB0471B45D51F00D1E2FC /* GicityCache.xcdatamodel */;
+			path = GicityCache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 69BCF26B1AEEBE1F0097B840 /* Project object */;
 }

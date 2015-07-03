@@ -8,6 +8,11 @@
 
 #import "GifManager.h"
 #import "Gif.h"
+#import "PersistentStoreManager.h"
+#import "CoreDataStack.h"
+#import "NSDate+util.h"
+#import "Feed.h"
+
 @implementation GifManager
 
 + (instancetype)sharedManager
@@ -23,19 +28,35 @@
 - (void)getTrendingGifonSuccess:(void (^)(NSArray *gifs, id responseObject))sucess
                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    [self GET:@"http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:10];
-        NSArray *data = responseObject[@"data"];
+    NSString *url = @"http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+
+    Feed *feed = [Feed findOrCreateFeedWithUrl:url inContext:[[[PersistentStoreManager sharedInstance] stack] backgroundManagedObjectContext]];
+    if (feed.gifs.count)
+    {
+        sucess([feed.gifs allObjects], nil);
+        return;
+    }
+    
+    [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __block NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:10];
+        __block NSArray *data = responseObject[@"data"];
+        NSDate *date = [NSDate date];
         for (NSDictionary *dict in data)
         {
-            Gif *gif = [[Gif alloc] init];
+            Gif *gif = [Gif insertNewObjectIntoContext: [[PersistentStoreManager sharedInstance] stack].backgroundManagedObjectContext];
             NSDictionary *images = dict[@"images"];
             NSString *url = images[@"downsized"][@"url"];
             NSString *downSized = images[@"fixed_height_downsampled"][@"url"];
             gif.gifURL = [NSURL URLWithString: url];
             gif.smallGifURL = [NSURL URLWithString: downSized];
+            gif.date = date;
             [array addObject:gif];
         }
+        __block NSError *error = nil;
+        [[PersistentStoreManager sharedInstance] performBlockInBackground:^(NSManagedObjectContext *context) {
+            feed.gifs = [NSSet setWithArray:array];
+            [context save: &error];
+        }];
         if (sucess)
         {
             sucess(array, responseObject);

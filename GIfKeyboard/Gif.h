@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface Gif : NSObject
+@interface Gif : ModelObject
 
 @property (nonatomic, copy) NSURL *gifURL;
-@property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSURL *smallGifURL;
+@property (nonatomic, strong) NSDate *date;
 
 @end

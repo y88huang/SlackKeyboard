@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SettingViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface AppDelegate ()
 

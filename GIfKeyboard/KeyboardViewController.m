@@ -21,6 +21,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+Gif.h"
 #import "AnimatedGIFImageSerialization.h"
+#import "PersistentStoreManager.h"
+#import "NSDate+util.h"
 
 const static CGFloat kButtonPanelHeight = 35.0f;
 const static CGFloat kButtonPadding = 4.0f;
@@ -58,6 +60,7 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     // Add custom view sizing constraints here
+    NSDate *date = [NSDate tomorrow];
     if (CGRectGetHeight(self.view.frame) == 0.0f || CGRectGetWidth(self.view.frame) == 0.0f) {
         return;
     }
@@ -100,6 +103,7 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [PersistentStoreManager sharedInstance];
     self.animatedGIFs = [[NSMutableArray alloc] initWithCapacity:10];
     // Perform custom UI setup here
     [[SettingManager sharedInstance] updateSetting];
