@@ -60,7 +60,7 @@ const static CGFloat kButtonWidth = 40.0f;
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     // Add custom view sizing constraints here
-    NSDate *date = [NSDate tomorrow];
+
     if (CGRectGetHeight(self.view.frame) == 0.0f || CGRectGetWidth(self.view.frame) == 0.0f) {
         return;
     }
@@ -99,11 +99,18 @@ const static CGFloat kButtonWidth = 40.0f;
     }];
     
     [self setupBottomPanelConstrains];
+    [self.shareView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(self.collectionView);
+        make.left.equalTo(self.giphyBanner.mas_right);
+        make.top.equalTo(self.giphyBanner.mas_top);
+    }];
+    [self.collectionView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [PersistentStoreManager sharedInstance];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     self.animatedGIFs = [[NSMutableArray alloc] initWithCapacity:10];
     // Perform custom UI setup here
     [[SettingManager sharedInstance] updateSetting];
@@ -114,8 +121,7 @@ const static CGFloat kButtonWidth = 40.0f;
     [self setupBottomPanel];
     _expandedHeight = 216.0;
     self.view.backgroundColor = [UIColor blackColor];
-    self.shareView = [[ShareView alloc] init];
-    [self.collectionView addSubview:self.shareView];
+    [self setupShareView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -145,6 +151,14 @@ const static CGFloat kButtonWidth = 40.0f;
 
 #pragma mark -
 #pragma mark - setup code
+
+- (void)setupShareView
+{
+    self.shareView = [[ShareView alloc] init];
+    self.shareView.hidden = YES;
+    [self.collectionView addSubview:self.shareView];
+}
+
 - (void)setupKeywordLabel
 {
     self.keywordLabel = [[UILabel alloc] init];
@@ -309,7 +323,7 @@ const static CGFloat kButtonWidth = 40.0f;
 #pragma mark - UICollectionView Delegate
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(150.0f, CGRectGetHeight(self.collectionView.bounds) / 2.0f);
+    return CGSizeMake(150.0f, floorf(CGRectGetHeight(collectionView.bounds) / 2.0f));
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -401,9 +415,9 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)showTrendingGifs:(UIButton *)sender
 {
+    [self hideKeyboard];
     self.keywordLabel.text = @"#Trending 20";
     self.shareView.hidden = YES;
-    [self hideKeyboard];
     [self fetchTrendingGifs];
 }
 
@@ -411,12 +425,12 @@ const static CGFloat kButtonWidth = 40.0f;
 {
     NSArray *images = [[AnimatedImageManager sharedInstance] getGifs];
     self.keywordLabel.text = @"DIY Gifs";
+    [self hideKeyboard];
     [self.animatedGIFs removeAllObjects];
     [self.animatedGIFs addObjectsFromArray:images];
     if (images.count == 0)
     {
         self.shareView.text = @"You don't have any custom gif yet, bro";
-        self.shareView.frame = self.collectionView.bounds;
         self.shareView.hidden = NO;
     }
     [self.collectionView reloadData];
@@ -469,15 +483,26 @@ const static CGFloat kButtonWidth = 40.0f;
     {
         return;
     }
+    __weak typeof(self) weakSelf = self;
     [[GifManager sharedManager] getGifWithKeyword:keyword onSuccess:^(NSArray *gifs, id responseObject) {
-        [self.animatedGIFs removeAllObjects];
-        self.keywordLabel.text = [NSString stringWithFormat:@"#%@",keyword];
-        [self.animatedGIFs addObjectsFromArray:gifs];
-        [self.collectionView reloadData];
+        __strong typeof(self) strongSelf = weakSelf;
+        [strongSelf.animatedGIFs removeAllObjects];
+        strongSelf.keywordLabel.text = [NSString stringWithFormat:@"#%@",keyword];
+        [strongSelf.animatedGIFs addObjectsFromArray:gifs];
+        [strongSelf.collectionView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [weakSelf.shareView showWithText:@"No Internet Connection"];
     }];
-    NSLog(@"%@",keyword);
+}
+
+- (void)keyboard:(SearchKeyboardView *)keyboard didInsertCharWithKeyboard:(NSString *)charString
+{
+    [self.textDocumentProxy insertText:charString];
+}
+
+- (void)didDeleteCharWithKeyboard:(SearchKeyboardView *)keyboard
+{
+    [self.textDocumentProxy deleteBackward];
 }
 
 @end

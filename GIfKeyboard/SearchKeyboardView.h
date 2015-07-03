@@ -13,6 +13,8 @@
 @protocol SearchKeybardViewProtocol <NSObject>
 
 - (void)keyboard:(SearchKeyboardView *)keyboard didFinishSearchingWithKeyword:(NSString *)keyword;
+- (void)keyboard:(SearchKeyboardView *)keyboard didInsertCharWithKeyboard:(NSString *)charString;
+- (void)didDeleteCharWithKeyboard:(SearchKeyboardView *)keyboard;
 
 @end
 

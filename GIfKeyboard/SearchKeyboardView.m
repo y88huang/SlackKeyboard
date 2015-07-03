@@ -12,6 +12,7 @@
 #import "SettingManager.h"
 #import "KeyboardStyle.h"
 #import "FlatUIKit.h"
+#import "AFNetworkReachabilityManager.h"
 
 const static CGFloat kButtonPadding = 5.0f;
 
@@ -58,7 +59,9 @@ const static CGFloat kButtonPadding = 5.0f;
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeReachability:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
         _isUpperCase = YES;
         self.backgroundColor = [self lighterColorForColor:_style.tintColor byDegree:0.4f];
         _firstRow = [[UIView alloc] init];
@@ -82,6 +85,24 @@ const static CGFloat kButtonPadding = 5.0f;
         [self setupKeyboardView];
     }
     return self;
+}
+
+- (void)didChangeReachability:(NSNotification *)notification
+{
+    AFNetworkReachabilityStatus status = [notification.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] integerValue];
+    switch (status)
+    {
+        case AFNetworkReachabilityStatusNotReachable:
+            NSLog(@"WTF");
+            _textField.text = @"No Internet connection, use as normal keyboard";
+            break;
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            _textField.text = @"";
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)updateConstraints
@@ -240,6 +261,7 @@ const static CGFloat kButtonPadding = 5.0f;
 
 - (void)keyPressed:(UIButton *)sender
 {
+    BOOL reachable = [AFNetworkReachabilityManager sharedManager].reachable;
     NSString *title = [sender titleForState:UIControlStateNormal];
     
     if (sender == _returnButton)
@@ -249,9 +271,15 @@ const static CGFloat kButtonPadding = 5.0f;
     }
     else if (sender == _deleteButton)
     {
-        if ([_textField.text length] > 0)
+        if (reachable) {
+            if ([_textField.text length] > 0)
+            {
+                _textField.text = [_textField.text substringToIndex:[_textField.text length] - 1];
+            }
+        }
+        else
         {
-            _textField.text = [_textField.text substringToIndex:[_textField.text length] - 1];
+            [self.delegate didDeleteCharWithKeyboard:self];
         }
     }
     else if (sender == _capButton)
@@ -265,7 +293,15 @@ const static CGFloat kButtonPadding = 5.0f;
     }
     else if (sender == _spaceButton)
     {
-        _textField.text = [_textField.text stringByAppendingString:@" "];
+        if (reachable)
+        {
+            _textField.text = [_textField.text stringByAppendingString:@" "];
+        }
+        else
+        {
+            [self.delegate keyboard:self didInsertCharWithKeyboard:@" "];
+        }
+       
     }
     else if (sender == _nextButton)
     {
@@ -274,8 +310,18 @@ const static CGFloat kButtonPadding = 5.0f;
     }
     else
     {
-        _textField.text = [_textField.text stringByAppendingString:title];
+        if (reachable)
+        {
+            _textField.text = [_textField.text stringByAppendingString:title];
+        } else {
+            [self.delegate keyboard:self didInsertCharWithKeyboard:title];
+        }
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
