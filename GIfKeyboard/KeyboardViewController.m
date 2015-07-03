@@ -101,8 +101,7 @@ const static CGFloat kButtonWidth = 40.0f;
     [self setupBottomPanelConstrains];
     [self.shareView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.collectionView);
-        make.left.equalTo(self.giphyBanner.mas_right);
-        make.top.equalTo(self.giphyBanner.mas_top);
+        make.center.equalTo(self.collectionView);
     }];
     [self.collectionView reloadData];
 }
@@ -438,7 +437,6 @@ const static CGFloat kButtonWidth = 40.0f;
 
 - (void)didLongPressOnCollectionView:(UILongPressGestureRecognizer *)sender
 {
-    self.shareView.frame = self.collectionView.bounds;
     switch (sender.state)
     {
         case UIGestureRecognizerStateBegan:
